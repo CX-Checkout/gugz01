@@ -16,6 +16,10 @@ public class Checkout {
     }
 
     public static Integer checkout(String skus) {
-        return SKU_PRICE.get(skus);
+        Integer totalPrice = 0;
+        for (String sku : skus.split("")) {
+            totalPrice += SKU_PRICE.get(sku);
+        }
+        return totalPrice;
     }
 }
