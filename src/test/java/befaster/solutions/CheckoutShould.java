@@ -33,4 +33,13 @@ public class CheckoutShould {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
+    @Test
+    @Parameters({
+            "AAA, 130",
+    })
+    public void
+    return_multi_price_for_A(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
 }
