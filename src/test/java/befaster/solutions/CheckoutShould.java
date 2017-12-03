@@ -19,7 +19,6 @@ public class CheckoutShould {
     public void
     return_minus_one_for_any_invalid_input(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
-        assertThat(Checkout.checkout(""), is(-1));
     }
 
     @Test
