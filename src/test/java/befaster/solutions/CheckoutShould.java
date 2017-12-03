@@ -2,6 +2,7 @@ package befaster.solutions;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,10 +17,20 @@ public class CheckoutShould {
             "A, 50",
             "B, 30",
             "C, 20",
-//            "D, 15",
+            "D, 15",
     })
     public void
     return_individual_price_of_each_item(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+    @Test
+    @Ignore
+    @Parameters({
+            "AA, 100"
+    })
+    public void
+    return_price_for_multiple_skus(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
