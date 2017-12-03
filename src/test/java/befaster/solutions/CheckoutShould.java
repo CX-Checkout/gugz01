@@ -15,7 +15,6 @@ public class CheckoutShould {
     @Parameters({
             "a, -1",
             "ABCs, -1",
-            ", -1",
     })
     public void
     return_minus_one_for_any_invalid_input(String skus, int price) {
@@ -26,8 +25,8 @@ public class CheckoutShould {
     @Test
     public void
     return_minus_one_for_empty_input() {
-        assertThat(Checkout.checkout(null), is(-1));
-        assertThat(Checkout.checkout(""), is(-1));
+        assertThat(Checkout.checkout(null), is(0));
+        assertThat(Checkout.checkout(""), is(0));
     }
 
     @Test

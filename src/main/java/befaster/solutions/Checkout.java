@@ -9,6 +9,7 @@ public class Checkout {
     static HashMap<String, Integer> SKU_PRICE;
 
     public static Integer checkout(String skus) {
+        if (isNullOrEmpty(skus)) return 0;
         if (!valid(skus)) return -1;
         SKU_PRICE = createSKUIndividualPrices();
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
@@ -33,7 +34,6 @@ public class Checkout {
     }
 
     private static boolean valid(String skus) {
-        if (isNullOrEmpty(skus)) return false;
         for (String sku : skus.split("")) {
             if (!"ABCD".contains(sku)) return false;
         }
