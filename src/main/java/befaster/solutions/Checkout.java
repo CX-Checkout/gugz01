@@ -2,6 +2,8 @@ package befaster.solutions;
 
 import java.util.HashMap;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 public class Checkout {
 
     static HashMap<String, Integer> SKU_PRICE;
@@ -22,11 +24,20 @@ public class Checkout {
     }
 
     private static Integer priceWithoutDiscounts(String skus) {
+        if (!valid(skus)) return -1;
         Integer totalPrice = 0;
         for (String sku : skus.split("")) {
             totalPrice += SKU_PRICE.getOrDefault(sku, 0);
         }
         return totalPrice;
+    }
+
+    private static boolean valid(String skus) {
+        if (isNullOrEmpty(skus)) return false;
+        for (String sku : skus.split("")) {
+            if (!"ABCD".contains(sku)) return false;
+        }
+        return true;
     }
 
     private static Integer discounts(HashMap<String, Integer> skusQuantity) {
