@@ -17,18 +17,21 @@ public class Checkout {
 
     public static Integer checkout(String skus) {
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
+        return priceWithoutDiscounts(skus) - discounts(skusQuantity);
+    }
+
+    private static Integer priceWithoutDiscounts(String skus) {
         Integer totalPrice = 0;
         for (String sku : skus.split("")) {
             totalPrice += SKU_PRICE.get(sku);
         }
-        totalPrice = applyDiscount(skusQuantity, totalPrice);
         return totalPrice;
     }
 
-    private static Integer applyDiscount(HashMap<String, Integer> skusQuantity, Integer totalPrice) {
+    private static Integer discounts(HashMap<String, Integer> skusQuantity) {
         int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
         int BDiscount = skusQuantity.getOrDefault("B", 0) / 2 * 15;
-        return totalPrice - ADiscount - BDiscount;
+        return ADiscount + BDiscount;
     }
 
     private static HashMap<String, Integer> skusQuantityFor(String skus) {
