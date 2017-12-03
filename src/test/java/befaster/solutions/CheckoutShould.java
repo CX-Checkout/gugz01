@@ -2,7 +2,6 @@ package befaster.solutions;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -25,7 +24,6 @@ public class CheckoutShould {
     }
 
     @Test
-    @Ignore
     @Parameters({
             "AA, 100"
     })
