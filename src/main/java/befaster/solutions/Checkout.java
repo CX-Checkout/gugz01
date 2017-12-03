@@ -4,7 +4,13 @@ import java.util.HashMap;
 
 public class Checkout {
 
-    static HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();
+    static HashMap<String, Integer> SKU_PRICE;
+
+    public static Integer checkout(String skus) {
+        SKU_PRICE = createSKUIndividualPrices();
+        HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
+        return priceWithoutDiscounts(skus) - discounts(skusQuantity);
+    }
 
     private static HashMap<String, Integer> createSKUIndividualPrices() {
         HashMap<String, Integer> skuPrices = new HashMap<>();
@@ -13,11 +19,6 @@ public class Checkout {
         skuPrices.put("C", 20);
         skuPrices.put("D", 15);
         return skuPrices;
-    }
-
-    public static Integer checkout(String skus) {
-        HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
-        return priceWithoutDiscounts(skus) - discounts(skusQuantity);
     }
 
     private static Integer priceWithoutDiscounts(String skus) {
