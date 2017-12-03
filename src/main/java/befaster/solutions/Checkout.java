@@ -23,11 +23,8 @@ public class Checkout {
 
     private static Integer priceWithoutDiscounts(String skus) {
         Integer totalPrice = 0;
-        System.out.println("SKU_PRICE = " + SKU_PRICE);
-        System.out.println("skus = " + skus);
         for (String sku : skus.split("")) {
-            System.out.println("sku = " + sku);
-            totalPrice += SKU_PRICE.get(sku);
+            totalPrice += SKU_PRICE.getOrDefault(sku, 0);
         }
         return totalPrice;
     }

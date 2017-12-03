@@ -11,6 +11,11 @@ import static org.junit.Assert.assertThat;
 @RunWith(JUnitParamsRunner.class)
 public class CheckoutShould {
 
+    @Test public void
+    return_zero_if_no_skus_are_provided() {
+        assertThat(Checkout.checkout(""), is(0));
+    }
+
     @Test
     @Parameters({
             "A, 50",
