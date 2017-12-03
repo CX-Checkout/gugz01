@@ -9,6 +9,7 @@ public class Checkout {
     static HashMap<String, Integer> SKU_PRICE;
 
     public static Integer checkout(String skus) {
+        if (!valid(skus)) return -1;
         SKU_PRICE = createSKUIndividualPrices();
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
         return priceWithoutDiscounts(skus) - discounts(skusQuantity);
@@ -24,7 +25,6 @@ public class Checkout {
     }
 
     private static Integer priceWithoutDiscounts(String skus) {
-        if (!valid(skus)) return -1;
         Integer totalPrice = 0;
         for (String sku : skus.split("")) {
             totalPrice += SKU_PRICE.getOrDefault(sku, 0);
