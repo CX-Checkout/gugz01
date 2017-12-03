@@ -48,6 +48,9 @@ public class CheckoutShould {
     @Test
     @Parameters({
             "BB, 45",
+            "BBBB, 90",
+            "BBB, 75",
+            "BBA, 95",
     })
     public void
     return_multi_price_for_B(String skus, int price) {

@@ -27,7 +27,8 @@ public class Checkout {
 
     private static Integer applyDiscount(HashMap<String, Integer> skusQuantity, Integer totalPrice) {
         int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
-        return totalPrice - ADiscount;
+        int BDiscount = skusQuantity.getOrDefault("B", 0) / 2 * 15;
+        return totalPrice - ADiscount - BDiscount;
     }
 
     private static HashMap<String, Integer> skusQuantityFor(String skus) {
