@@ -2,7 +2,7 @@ package befaster.solutions.checkout.offers;
 
 import befaster.solutions.checkout.SKUs;
 
-public class TwoFsOffer {
+public class _2F_offer {
 
     public static DiscountResult discountFor(String skus) {
         long quantityOfFs = SKUs.skuQuantity(skus, "F");

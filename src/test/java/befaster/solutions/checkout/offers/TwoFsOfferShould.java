@@ -21,7 +21,7 @@ public class TwoFsOfferShould {
     })
     public void
     return_price_for_TWO_Fs_GET_ONE_F_FREE(String skus, int discount, String remainingSkus) {
-        DiscountResult discountResult = TwoFsOffer.discountFor(skus);
+        DiscountResult discountResult = _2F_offer.discountFor(skus);
         assertThat(discountResult.discount, is(discount));
         assertThat(discountResult.remainingSkus, is(remainingSkus));
     }
