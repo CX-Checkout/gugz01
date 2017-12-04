@@ -10,12 +10,12 @@ public class Checkout {
         if (isNullOrEmpty(skus)) return 0;
         if (!SKUs.valid(skus)) return -1;
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
-        return SKUs.pricesFor(skus) - discounts(skusQuantity);
+        return SKUs.pricesFor(skus) - discounts(skusQuantity, skus);
     }
     
-    private static Integer discounts(HashMap<String, Integer> skusQuantity) {
+    private static Integer discounts(HashMap<String, Integer> skusQuantity, String skus) {
         int EDiscount = skusQuantity.getOrDefault("E", 0) / 2 * 30;
-        int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
+        int ADiscount = discountForA(skus);
         int BDiscount = skusQuantity.getOrDefault("B", 0) / 2 * 15;
         int discount = ADiscount;
         if (EDiscount > BDiscount) {
@@ -26,6 +26,11 @@ public class Checkout {
         return discount;
     }
 
+    private static int discountForA(String skus) {
+        DiscountForAs discountForAs = new DiscountForAs();
+        return discountForAs.priceFor(skus);
+    }
+
     private static HashMap<String, Integer> skusQuantityFor(String skus) {
         HashMap<String, Integer> skusQuantity = new HashMap<>();
         for (String sku : skus.split("")) {
@@ -34,7 +39,7 @@ public class Checkout {
         return skusQuantity;
     }
 
-    public class DiscountForAs {
+    public static class DiscountForAs {
 
         int priceFor(String skus) {
             long quantityOfAs = SKUs.skuQuantity(skus, "A");
