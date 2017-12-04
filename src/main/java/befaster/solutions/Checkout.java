@@ -16,13 +16,6 @@ public class Checkout {
         DiscountResult ADiscount = discountForA(BDiscount.remainingSkus);
 
         return ADiscount.discount + BDiscount.discount + EDiscount.discount;
-//        int discount = ADiscount.discount;
-//        if (EDiscount.discount > BDiscount.discount) {
-//            discount += EDiscount.discount;
-//        } else {
-//            discount += BDiscount.discount;
-//        }
-//        return discount;
     }
 
     private static DiscountResult discountForA(String skus) {
@@ -76,6 +69,9 @@ public class Checkout {
             if (numberOfDoubleEs > 0) {
                 String orderedSkus = SKUs.sort(skus);
                 String remainingSkus = orderedSkus.replaceAll("EE", "");
+                for (int i = 0; i < numberOfDoubleEs; i++) {
+                    remainingSkus = remainingSkus.replace("B", "");
+                }
                 int discount = numberOfDoubleEs * 30;
                 return new DiscountResult(discount, remainingSkus);
             }
