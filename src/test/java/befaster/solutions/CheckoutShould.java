@@ -36,6 +36,9 @@ public class CheckoutShould {
             "D, 15",
             "E, 40",
             "F, 10",
+            "G, 20",
+            "H, 10",
+            "I, 35",
     })
     public void
     return_individual_price_of_each_item(String skus, int price) {
