@@ -7,7 +7,7 @@ public class DiscountResult {
     public final int discount;
     public final String remainingSkus;
 
-    DiscountResult(int discount, String remainingSkus) {
+    public DiscountResult(int discount, String remainingSkus) {
         this.discount = discount;
         this.remainingSkus = remainingSkus;
     }

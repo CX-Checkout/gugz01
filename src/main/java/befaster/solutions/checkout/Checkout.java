@@ -1,11 +1,15 @@
 package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.*;
+import befaster.solutions.checkout.offers.multi_item.FiveAsOffer;
+import befaster.solutions.checkout.offers.multi_item.FiveHsOffer;
+import befaster.solutions.checkout.offers.multi_item.ThreeAsOffer;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
+    static Offer fiveHsOffer = new FiveHsOffer();
     static Offer twoBsOffer = new TwoBsOffer();
     static Offer fiveAsOffer = new FiveAsOffer();
     static Offer threeAsOffer = new ThreeAsOffer();

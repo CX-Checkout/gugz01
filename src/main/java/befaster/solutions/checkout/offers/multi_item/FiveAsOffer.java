@@ -1,4 +1,4 @@
-package befaster.solutions.checkout.offers;
+package befaster.solutions.checkout.offers.multi_item;
 
 public class FiveAsOffer extends MultiItemOffer {
 

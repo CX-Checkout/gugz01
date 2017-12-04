@@ -109,7 +109,7 @@ public class CheckoutShould {
     @Test
     @Parameters({
             "HHH, 30",
-//            "HHHHH, 45",
+            "HHHHH, 45",
     })
     public void
     return_multi_item_discount_for_H(String skus, int price) {

@@ -1,6 +1,8 @@
-package befaster.solutions.checkout.offers;
+package befaster.solutions.checkout.offers.multi_item;
 
 import befaster.solutions.checkout.SKUs;
+import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.Offer;
 
 import static org.apache.commons.lang3.StringUtils.repeat;
 
