@@ -40,7 +40,7 @@ public class Checkout {
         DiscountResult _2B_discount  = _2B_offer.discountFor(_2E_discount.remainingSkus);
         DiscountResult _5A_discount  = _5A_offer.discountFor(_2B_discount.remainingSkus);
         DiscountResult _3A_discount  = _3A_offer.discountFor(_5A_discount.remainingSkus);
-        DiscountResult _2F_discount  = _2F_offer.discountFor(_3A_discount.remainingSkus);
+        DiscountResult _2F_discount  = TwoF_offer.discountFor(_3A_discount.remainingSkus);
 
         return _5A_discount.discount +
                 _3A_discount.discount +

@@ -172,7 +172,7 @@ public class CheckoutShould {
             "EEBBBA, 175", // EEB (80) + BB(45) + A(50) = 175
     })
     public void
-    return_price_where_two_Es_will_give_a_free_B(String skus, int price) {
+    return_price_where_two_Es_will_give_one_B_free(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
@@ -182,7 +182,17 @@ public class CheckoutShould {
             "NNNM, 120",
     })
     public void
-    return_price_where_3_Ns_will_give_a_free_M(String skus, int price) {
+    return_price_where_3_Ns_will_give_one_M_free(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+    @Test
+    @Parameters({
+            "RRR, 150",
+            "RRRQ, 150",
+    })
+    public void
+    return_price_where_3_Rs_will_give_one_Q_free(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
