@@ -17,12 +17,11 @@ public class MultiItemOffer {
     }
 
     public DiscountResult discountFor(String skus) {
-        long quantityOfAs = SKUs.skuQuantity(skus, sku);
-        int numberOfTripleAs = (int) quantityOfAs / numberOfItems;
-        if (numberOfTripleAs > 0) {
+        int numberOfMultipleItems = (int) SKUs.skuQuantity(skus, sku) / numberOfItems;
+        if (numberOfMultipleItems > 0) {
             String orderedSkus = SKUs.sort(skus);
             String remainingSkus = orderedSkus.replaceAll(repeat(sku, numberOfItems), "");
-            int totalDiscount = numberOfTripleAs * discount;
+            int totalDiscount = numberOfMultipleItems * discount;
             return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);
