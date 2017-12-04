@@ -9,8 +9,10 @@ public class TwoEsOffer {
             String remainingSkus = orderedSkus.replaceAll("EE", "");
             int discount = 0;
             for (int i = 0; i < numberOfDoubleEs; i++) {
-                remainingSkus = remainingSkus.replaceFirst("B", "");
-                discount += 30;
+                if (remainingSkus.contains("B")) {
+                    discount += 30;
+                    remainingSkus = remainingSkus.replaceFirst("B", "");
+                }
             }
             return new DiscountResult(discount, remainingSkus);
         }
