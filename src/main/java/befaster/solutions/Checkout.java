@@ -33,4 +33,12 @@ public class Checkout {
         }
         return skusQuantity;
     }
+
+    public class DiscountForAs {
+
+        int priceFor(String skus) {
+            long quantityOfAs = SKUs.skuQuantity(skus, "A");
+            return (int) quantityOfAs / 3 * 20;
+        }
+    }
 }

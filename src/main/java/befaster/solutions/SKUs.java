@@ -2,6 +2,8 @@ package befaster.solutions;
 
 import java.util.HashMap;
 
+import static java.util.Arrays.asList;
+
 public class SKUs {
 
     static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
@@ -42,5 +44,14 @@ public class SKUs {
             totalPrice += SKUs.priceFor(sku);
         }
         return totalPrice;
+    }
+
+    static long skuQuantity(String skus, String sku) {
+        return asList(skus.split("")).stream().filter(s -> s.equals(sku)).count();
+//        HashMap<String, Integer> skusQuantity = new HashMap<>();
+//        for (String sku : skus.split("")) {
+//            skusQuantity.put(sku, skusQuantity.getOrDefault(sku, 0) + 1);
+//        }
+//        return skusQuantity.getOrDefault("A", 0);
     }
 }
