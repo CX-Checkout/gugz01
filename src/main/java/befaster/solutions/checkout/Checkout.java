@@ -7,6 +7,8 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
+    static Offer threeVsOffer = new ThreeVsOffer();
+    static Offer twoVsOffer = new TwoVsOffer();
     static Offer threeQsOffer = new ThreeQsOffer();
     static Offer fivePsOffer = new FivePsOffer();
     static Offer twoKsOffer = new TwoKsOffer();
@@ -23,7 +25,9 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
-        DiscountResult ThreeQsDiscount = threeQsOffer.discountFor(skus);
+        DiscountResult ThreeVsDiscount = threeVsOffer.discountFor(skus);
+        DiscountResult TwoVsDiscount = twoVsOffer.discountFor(ThreeVsDiscount.remainingSkus);
+        DiscountResult ThreeQsDiscount = threeQsOffer.discountFor(TwoVsDiscount.remainingSkus);
         DiscountResult FivePsDiscount = fivePsOffer.discountFor(ThreeQsDiscount.remainingSkus);
         DiscountResult TwoKsDiscount = twoKsOffer.discountFor(FivePsDiscount.remainingSkus);
         DiscountResult TenHsDiscount = tenHsOffer.discountFor(TwoKsDiscount.remainingSkus);
@@ -43,7 +47,9 @@ public class Checkout {
                 TenHsDiscount.discount +
                 TwoKsDiscount.discount +
                 FivePsDiscount.discount +
-                ThreeQsDiscount.discount;
+                ThreeQsDiscount.discount +
+                TwoVsDiscount.discount +
+                ThreeVsDiscount.discount;
     }
 
 }
