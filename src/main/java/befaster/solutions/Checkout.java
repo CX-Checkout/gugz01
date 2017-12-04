@@ -40,6 +40,7 @@ public class Checkout {
 
     public static class DiscountForAs {
         DiscountResult priceFor(String skus) {
+            System.out.println("A - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "A");
             int numberOfTripleAs = (int) quantityOfAs / 3;
             if (numberOfTripleAs > 0) {
@@ -55,6 +56,7 @@ public class Checkout {
 
     public static class DiscountForBs {
         DiscountResult priceFor(String skus) {
+            System.out.println("B - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "B");
             int numberOfDoubleBs = (int) quantityOfAs / 2;
             if (numberOfDoubleBs > 0) {
@@ -69,6 +71,7 @@ public class Checkout {
 
     public static class DiscountForEs {
         DiscountResult priceFor(String skus) {
+            System.out.println("C - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "E");
             int numberOfDoubleEs = (int) quantityOfAs / 2;
             if (numberOfDoubleEs > 0) {
