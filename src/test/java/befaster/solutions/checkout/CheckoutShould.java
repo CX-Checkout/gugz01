@@ -102,7 +102,17 @@ public class CheckoutShould {
             "BBA, 95",
     })
     public void
-    return_multi_price_for_B(String skus, int price) {
+    return_multi_item_discount_for_B(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+    @Test
+    @Parameters({
+            "HHH, 30",
+//            "HHHHH, 45",
+    })
+    public void
+    return_multi_item_discount_for_H(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
