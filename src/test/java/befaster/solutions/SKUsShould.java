@@ -14,7 +14,8 @@ public class SKUsShould {
     @Test
     @Parameters({
             "A, A",
-            "BA, AB"
+            "BA, AB",
+            "EAABDDCE, AABCDDEE"
     })
     public void
     sortSkus(String input, String output) {
