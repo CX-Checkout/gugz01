@@ -29,31 +29,31 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         DiscountResult _3N_Free_M_discount = three_Ns_Free_M_Offer.discountFor(skus);
-        DiscountResult ThreeVsDiscount = threeVsOffer.discountFor(_3N_Free_M_discount.remainingSkus);
-        DiscountResult TwoVsDiscount = twoVsOffer.discountFor(ThreeVsDiscount.remainingSkus);
-        DiscountResult ThreeQsDiscount = threeQsOffer.discountFor(TwoVsDiscount.remainingSkus);
-        DiscountResult FivePsDiscount = fivePsOffer.discountFor(ThreeQsDiscount.remainingSkus);
-        DiscountResult TwoKsDiscount = twoKsOffer.discountFor(FivePsDiscount.remainingSkus);
-        DiscountResult TenHsDiscount = tenHsOffer.discountFor(TwoKsDiscount.remainingSkus);
-        DiscountResult FiveHsDiscount = fiveHsOffer.discountFor(TenHsDiscount.remainingSkus);
-        DiscountResult TwoEsDiscount = twoEsOffer.discountFor(FiveHsDiscount.remainingSkus);
-        DiscountResult TwoBsDiscount = twoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
-        DiscountResult FiveAsDiscount = fiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
-        DiscountResult ThreeAsDiscount = threeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
+        DiscountResult _3V_discount = threeVsOffer.discountFor(_3N_Free_M_discount.remainingSkus);
+        DiscountResult _2V_discount = twoVsOffer.discountFor(_3V_discount.remainingSkus);
+        DiscountResult _3Q_discount = threeQsOffer.discountFor(_2V_discount.remainingSkus);
+        DiscountResult _5P_discount = fivePsOffer.discountFor(_3Q_discount.remainingSkus);
+        DiscountResult _2K_discount = twoKsOffer.discountFor(_5P_discount.remainingSkus);
+        DiscountResult _10H_discount = tenHsOffer.discountFor(_2K_discount.remainingSkus);
+        DiscountResult _5H_discount = fiveHsOffer.discountFor(_10H_discount.remainingSkus);
+        DiscountResult _2E_discount = twoEsOffer.discountFor(_5H_discount.remainingSkus);
+        DiscountResult _2B_discount = twoBsOffer.discountFor(_2E_discount.remainingSkus);
+        DiscountResult _5A_discount = fiveAsOffer.discountFor(_2B_discount.remainingSkus);
+        DiscountResult ThreeAsDiscount = threeAsOffer.discountFor(_5A_discount.remainingSkus);
         DiscountResult TwoFsAsDiscount = TwoFsOffer.discountFor(ThreeAsDiscount.remainingSkus);
 
-        return FiveAsDiscount.discount +
+        return _5A_discount.discount +
                 ThreeAsDiscount.discount +
-                TwoBsDiscount.discount +
-                TwoEsDiscount.discount +
+                _2B_discount.discount +
+                _2E_discount.discount +
                 TwoFsAsDiscount.discount +
-                FiveHsDiscount.discount +
-                TenHsDiscount.discount +
-                TwoKsDiscount.discount +
-                FivePsDiscount.discount +
-                ThreeQsDiscount.discount +
-                TwoVsDiscount.discount +
-                ThreeVsDiscount.discount +
+                _5H_discount.discount +
+                _10H_discount.discount +
+                _2K_discount.discount +
+                _5P_discount.discount +
+                _3Q_discount.discount +
+                _2V_discount.discount +
+                _3V_discount.discount +
                 _3N_Free_M_discount.discount;
     }
 
