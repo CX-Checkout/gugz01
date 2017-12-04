@@ -15,11 +15,13 @@ public class Checkout {
         DiscountResult TwoBsDiscount = TwoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
         DiscountResult FiveAsDiscount = FiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
         DiscountResult ThreeAsDiscount = ThreeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
+        DiscountResult TwoFsAsDiscount = TwoFsOffer.discountFor(ThreeAsDiscount.remainingSkus);
 
         return FiveAsDiscount.discount +
                 ThreeAsDiscount.discount +
                 TwoBsDiscount.discount +
-                TwoEsDiscount.discount;
+                TwoEsDiscount.discount +
+                TwoFsAsDiscount.discount;
     }
 
 }
