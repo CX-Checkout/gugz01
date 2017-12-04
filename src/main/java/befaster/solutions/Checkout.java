@@ -12,8 +12,11 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         DiscountResult EDiscount = discountForEs(skus);
+        System.out.println("EDiscount = " + EDiscount);
         DiscountResult BDiscount = discountForBs(EDiscount.remainingSkus);
+        System.out.println("BDiscount = " + BDiscount);
         DiscountResult ADiscount = discountForA(BDiscount.remainingSkus);
+        System.out.println("ADiscount = " + ADiscount);
 
         return ADiscount.discount + BDiscount.discount + EDiscount.discount;
     }
@@ -86,6 +89,11 @@ public class Checkout {
         DiscountResult(int discount, String remainingSkus) {
             this.discount = discount;
             this.remainingSkus = remainingSkus;
+        }
+
+        @Override
+        public String toString() {
+            return reflectionToString(this, MULTI_LINE_STYLE);
         }
     }
 }
