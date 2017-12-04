@@ -13,8 +13,8 @@ public class TwoFsOfferShould {
 
     @Test
     @Parameters({
-            "FF, 20, ",
-            "FFF, 20, "
+//            "FF, 0, ",
+            "FFF, 10, "
     })
     public void
     return_price_for_TWO_Fs_GET_ONE_F_FREE(String skus, int discount, String remainingSkus) {
