@@ -1,11 +1,11 @@
-package befaster.solutions;
+package befaster.solutions.checkout.offers;
 
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 public class DiscountResult {
-    final int discount;
-    final String remainingSkus;
+    public final int discount;
+    public final String remainingSkus;
 
     DiscountResult(int discount, String remainingSkus) {
         this.discount = discount;

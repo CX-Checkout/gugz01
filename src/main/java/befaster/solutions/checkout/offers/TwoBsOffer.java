@@ -1,7 +1,10 @@
-package befaster.solutions;
+package befaster.solutions.checkout.offers;
+
+import befaster.solutions.checkout.SKUs;
 
 public class TwoBsOffer {
-    static DiscountResult discountFor(String skus) {
+
+    public static DiscountResult discountFor(String skus) {
         long quantityOfAs = SKUs.skuQuantity(skus, "B");
         int numberOfDoubleBs = (int) quantityOfAs / 2;
         if (numberOfDoubleBs > 0) {

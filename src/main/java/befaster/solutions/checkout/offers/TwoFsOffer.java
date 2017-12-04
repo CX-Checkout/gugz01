@@ -1,7 +1,10 @@
-package befaster.solutions;
+package befaster.solutions.checkout.offers;
 
-class TwoFsOffer {
-    static DiscountResult discountFor(String skus) {
+import befaster.solutions.checkout.SKUs;
+
+public class TwoFsOffer {
+
+    public static DiscountResult discountFor(String skus) {
         long quantityOfFs = SKUs.skuQuantity(skus, "F");
         int numberOfTripleFs = (int) quantityOfFs / 3;
         String remainingSkus = "";

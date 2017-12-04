@@ -1,4 +1,4 @@
-package befaster.solutions;
+package befaster.solutions.checkout;
 
 import java.util.HashMap;
 import java.util.stream.Collectors;
@@ -69,11 +69,11 @@ public class SKUs {
         return totalPrice;
     }
 
-    static long skuQuantity(String skus, String sku) {
+    public static long skuQuantity(String skus, String sku) {
         return asList(skus.split("")).stream().filter(s -> s.equals(sku)).count();
     }
 
-    static String sort(String input) {
+    public static String sort(String input) {
         return asList(input.split(""))
                 .stream()
                 .sorted(naturalOrder())

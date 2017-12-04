@@ -1,5 +1,7 @@
-package befaster.solutions;
+package befaster.solutions.checkout.offers;
 
+import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.TwoEsOffer;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;

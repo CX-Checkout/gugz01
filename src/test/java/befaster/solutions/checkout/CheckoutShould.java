@@ -1,4 +1,4 @@
-package befaster.solutions;
+package befaster.solutions.checkout;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

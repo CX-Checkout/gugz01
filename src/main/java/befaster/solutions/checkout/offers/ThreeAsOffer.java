@@ -1,7 +1,10 @@
-package befaster.solutions;
+package befaster.solutions.checkout.offers;
+
+import befaster.solutions.checkout.SKUs;
 
 public class ThreeAsOffer {
-    static DiscountResult discountFor(String skus) {
+
+    public static DiscountResult discountFor(String skus) {
         long quantityOfAs = SKUs.skuQuantity(skus, "A");
         int numberOfTripleAs = (int) quantityOfAs / 3;
         if (numberOfTripleAs > 0) {
@@ -12,5 +15,4 @@ public class ThreeAsOffer {
         }
         return new DiscountResult(0, skus);
     }
-
 }

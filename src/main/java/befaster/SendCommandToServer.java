@@ -3,7 +3,7 @@ package befaster;
 import befaster.runner.ClientRunner;
 import befaster.runner.ConfigNotFoundException;
 import befaster.runner.RunnerAction;
-import befaster.solutions.Checkout;
+import befaster.solutions.checkout.Checkout;
 import befaster.solutions.FizzBuzz;
 import befaster.solutions.Hello;
 import befaster.solutions.Sum;

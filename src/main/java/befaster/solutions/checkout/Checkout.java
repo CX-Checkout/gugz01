@@ -1,4 +1,6 @@
-package befaster.solutions;
+package befaster.solutions.checkout;
+
+import befaster.solutions.checkout.offers.*;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
