@@ -36,4 +36,11 @@ public class SKUs {
         return SKU_PRICE.getOrDefault(sku, 0);
     }
 
+    static int pricesFor(String skus) {
+        Integer totalPrice = 0;
+        for (String sku : skus.split("")) {
+            totalPrice += SKUs.priceFor(sku);
+        }
+        return totalPrice;
+    }
 }

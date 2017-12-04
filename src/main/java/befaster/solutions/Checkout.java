@@ -10,17 +10,9 @@ public class Checkout {
         if (isNullOrEmpty(skus)) return 0;
         if (!SKUs.valid(skus)) return -1;
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
-        return priceWithoutDiscounts(skus) - discounts(skusQuantity);
+        return SKUs.pricesFor(skus) - discounts(skusQuantity);
     }
-
-    private static Integer priceWithoutDiscounts(String skus) {
-        Integer totalPrice = 0;
-        for (String sku : skus.split("")) {
-            totalPrice += SKUs.priceFor(sku);
-        }
-        return totalPrice;
-    }
-
+    
     private static Integer discounts(HashMap<String, Integer> skusQuantity) {
         int EDiscount = skusQuantity.getOrDefault("E", 0) / 2 * 30;
         int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
