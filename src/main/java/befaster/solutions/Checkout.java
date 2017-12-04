@@ -14,11 +14,8 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         DiscountResult EDiscount = discountForEs(skus);
-        System.out.println("EDiscount = " + EDiscount);
         DiscountResult BDiscount = discountForBs(EDiscount.remainingSkus);
-        System.out.println("BDiscount = " + BDiscount);
         DiscountResult ADiscount = discountForA(BDiscount.remainingSkus);
-        System.out.println("ADiscount = " + ADiscount);
 
         return ADiscount.discount + BDiscount.discount + EDiscount.discount;
     }
@@ -40,7 +37,6 @@ public class Checkout {
 
     public static class DiscountForAs {
         DiscountResult priceFor(String skus) {
-            System.out.println("A - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "A");
             int numberOfTripleAs = (int) quantityOfAs / 3;
             if (numberOfTripleAs > 0) {
@@ -56,7 +52,6 @@ public class Checkout {
 
     public static class DiscountForBs {
         DiscountResult priceFor(String skus) {
-            System.out.println("B - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "B");
             int numberOfDoubleBs = (int) quantityOfAs / 2;
             if (numberOfDoubleBs > 0) {
@@ -71,14 +66,13 @@ public class Checkout {
 
     public static class DiscountForEs {
         DiscountResult priceFor(String skus) {
-            System.out.println("C - skus = " + skus);
             long quantityOfAs = SKUs.skuQuantity(skus, "E");
             int numberOfDoubleEs = (int) quantityOfAs / 2;
             if (numberOfDoubleEs > 0) {
                 String orderedSkus = SKUs.sort(skus);
                 String remainingSkus = orderedSkus.replaceAll("EE", "");
                 for (int i = 0; i < numberOfDoubleEs; i++) {
-                    remainingSkus = remainingSkus.replace("B", "");
+                    remainingSkus = remainingSkus.replaceFirst("B", "");
                 }
                 int discount = numberOfDoubleEs * 30;
                 return new DiscountResult(discount, remainingSkus);
