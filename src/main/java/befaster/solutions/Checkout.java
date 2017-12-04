@@ -6,14 +6,12 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
-    static HashMap<String, Integer> SKU_PRICE;
-    static String SKUS;
+    static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
+    static final String SKUS = allSKUs();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
         if (!valid(skus)) return -1;
-        SKU_PRICE = createSKUIndividualPrices();
-        SKUS = allSKUs();
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
         return priceWithoutDiscounts(skus) - discounts(skusQuantity);
     }

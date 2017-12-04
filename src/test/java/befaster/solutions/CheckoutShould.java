@@ -75,4 +75,14 @@ public class CheckoutShould {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
+    @Test
+    @Parameters({
+            "EB, 70",
+    })
+    public void
+    return_price_with_multi_E_discount(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+
 }
