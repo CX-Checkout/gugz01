@@ -1,10 +1,10 @@
 package befaster.solutions;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
+import static java.util.Comparator.naturalOrder;
 
 public class SKUs {
 
@@ -55,7 +55,7 @@ public class SKUs {
     static String sort(String input) {
         return asList(input.split(""))
                 .stream()
-                .sorted((s1, s2) -> s1.compareTo(s2))
-                .flatMap()
+                .sorted(naturalOrder())
+                .collect(Collectors.joining());
     }
 }
