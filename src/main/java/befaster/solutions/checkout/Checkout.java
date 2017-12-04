@@ -1,6 +1,7 @@
 package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.*;
+import befaster.solutions.checkout.offers.combined_item.ThreeNsFreeMOffer;
 import befaster.solutions.checkout.offers.multi_item.*;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
@@ -18,6 +19,7 @@ public class Checkout {
     static Offer fiveAsOffer = new FiveAsOffer();
     static Offer threeAsOffer = new ThreeAsOffer();
     static Offer twoEsOffer = new TwoEsOffer();
+    static Offer three_Ns_Free_M_Offer = new ThreeNsFreeMOffer();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
@@ -26,7 +28,8 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
-        DiscountResult ThreeVsDiscount = threeVsOffer.discountFor(skus);
+        DiscountResult _3N_Free_M_discount = three_Ns_Free_M_Offer.discountFor(skus);
+        DiscountResult ThreeVsDiscount = threeVsOffer.discountFor(_3N_Free_M_discount.remainingSkus);
         DiscountResult TwoVsDiscount = twoVsOffer.discountFor(ThreeVsDiscount.remainingSkus);
         DiscountResult ThreeQsDiscount = threeQsOffer.discountFor(TwoVsDiscount.remainingSkus);
         DiscountResult FivePsDiscount = fivePsOffer.discountFor(ThreeQsDiscount.remainingSkus);
@@ -50,7 +53,8 @@ public class Checkout {
                 FivePsDiscount.discount +
                 ThreeQsDiscount.discount +
                 TwoVsDiscount.discount +
-                ThreeVsDiscount.discount;
+                ThreeVsDiscount.discount +
+                _3N_Free_M_discount.discount;
     }
 
 }
