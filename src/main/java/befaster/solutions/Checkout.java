@@ -13,9 +13,13 @@ public class Checkout {
     private static Integer discounts(String skus) {
         DiscountResult TwoEsDiscount = TwoEsOffer.discountFor(skus);
         DiscountResult TwoBsDiscount = TwoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
-        DiscountResult ThreeAsDiscount = ThreeAsOffer.discountFor(TwoBsDiscount.remainingSkus);
+        DiscountResult FiveAsDiscount = FiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
+        DiscountResult ThreeAsDiscount = ThreeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
 
-        return ThreeAsDiscount.discount + TwoBsDiscount.discount + TwoEsDiscount.discount;
+        return FiveAsDiscount.discount +
+                ThreeAsDiscount.discount +
+                TwoBsDiscount.discount +
+                TwoEsDiscount.discount;
     }
 
 }
