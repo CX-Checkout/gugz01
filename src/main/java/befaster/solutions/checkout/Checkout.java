@@ -1,7 +1,8 @@
 package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.*;
-import befaster.solutions.checkout.offers.combined_item.ThreeNsFreeMOffer;
+import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
+import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
 import befaster.solutions.checkout.offers.multi_item.*;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
@@ -19,7 +20,8 @@ public class Checkout {
     static Offer _5A_offer  = new FiveAsOffer();
     static Offer _3A_offer  = new ThreeAsOffer();
     static Offer _2E_offer  = new TwoEsOffer();
-    static Offer _3N_Free_M_Offer = new ThreeNsFreeMOffer();
+    static Offer _3N_1M_Free_Offer = new _3N_1M_Free_Offer();
+    static Offer _3R_1Q_Free_Offer = new _3R_1Q_Free_Offer();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
@@ -28,8 +30,9 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
-        DiscountResult _3N_Free_M_discount = _3N_Free_M_Offer.discountFor(skus);
-        DiscountResult _3V_discount  = _3V_offer.discountFor(_3N_Free_M_discount.remainingSkus);
+        DiscountResult _3R_1Q_Free_discount = _3R_1Q_Free_Offer.discountFor(skus);
+        DiscountResult _3N_1M_Free_discount = _3N_1M_Free_Offer.discountFor(_3R_1Q_Free_discount.remainingSkus);
+        DiscountResult _3V_discount  = _3V_offer.discountFor(_3N_1M_Free_discount.remainingSkus);
         DiscountResult _2V_discount  = _2V_offer.discountFor(_3V_discount.remainingSkus);
         DiscountResult _3Q_discount  = _3Q_offer.discountFor(_2V_discount.remainingSkus);
         DiscountResult _5P_discount  = _5P_offer.discountFor(_3Q_discount.remainingSkus);
@@ -54,7 +57,8 @@ public class Checkout {
                 _3Q_discount.discount +
                 _2V_discount.discount +
                 _3V_discount.discount +
-                _3N_Free_M_discount.discount;
+                _3N_1M_Free_discount.discount +
+                _3R_1Q_Free_discount.discount;
     }
 
 }
