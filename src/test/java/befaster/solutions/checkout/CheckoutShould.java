@@ -178,6 +178,16 @@ public class CheckoutShould {
 
     @Test
     @Parameters({
+            "NNN, 120",
+            "NNNM, 120",
+    })
+    public void
+    return_price_where_3_Ns_will_give_a_free_M(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+    @Test
+    @Parameters({
             "FF, 20",
             "FFF, 20"
     })
