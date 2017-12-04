@@ -65,6 +65,8 @@ public class CheckoutShould {
     @Test
     @Parameters({
             "AAAAA, 200",
+            "AAAAAA, 250",
+            "AAAAAAB, 280",
     })
     public void
     return_price_for_five_As_offer(String skus, int price) {
