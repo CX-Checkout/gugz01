@@ -4,7 +4,7 @@ import befaster.solutions.checkout.SKUs;
 
 import static org.apache.commons.lang3.StringUtils.repeat;
 
-public class MultiItemOffer {
+public class MultiItemOffer implements Offer {
 
     private final String sku;
     private final int numberOfItems;
@@ -16,6 +16,7 @@ public class MultiItemOffer {
         this.discount = discount;
     }
 
+    @Override
     public DiscountResult discountFor(String skus) {
         int numberOfMultipleItems = (int) SKUs.skuQuantity(skus, sku) / numberOfItems;
         if (numberOfMultipleItems > 0) {

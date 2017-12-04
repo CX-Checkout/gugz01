@@ -6,6 +6,8 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
+    static Offer threeAsOffer = new ThreeAsOffer();
+
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
         if (!SKUs.valid(skus)) return -1;
@@ -16,7 +18,7 @@ public class Checkout {
         DiscountResult TwoEsDiscount = TwoEsOffer.discountFor(skus);
         DiscountResult TwoBsDiscount = TwoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
         DiscountResult FiveAsDiscount = FiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
-        DiscountResult ThreeAsDiscount = ThreeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
+        DiscountResult ThreeAsDiscount = threeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
         DiscountResult TwoFsAsDiscount = TwoFsOffer.discountFor(ThreeAsDiscount.remainingSkus);
 
         return FiveAsDiscount.discount +
