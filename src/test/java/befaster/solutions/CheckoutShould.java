@@ -78,9 +78,11 @@ public class CheckoutShould {
     @Test
     @Parameters({
             "EB, 70",
+            "EEB, 80",
+            "EEEEBBA, 210",
     })
     public void
-    return_price_with_multi_E_discount(String skus, int price) {
+    return_price_where_two_Es_will_give_a_free_B(String skus, int price) {
         assertThat(Checkout.checkout(skus), is(price));
     }
 

@@ -50,9 +50,10 @@ public class Checkout {
     }
 
     private static Integer discounts(HashMap<String, Integer> skusQuantity) {
+        int EDiscount = skusQuantity.getOrDefault("E", 0) / 2 * 30;
         int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
         int BDiscount = skusQuantity.getOrDefault("B", 0) / 2 * 15;
-        return ADiscount + BDiscount;
+        return ADiscount + BDiscount + EDiscount;
     }
 
     private static HashMap<String, Integer> skusQuantityFor(String skus) {
