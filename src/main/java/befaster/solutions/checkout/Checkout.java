@@ -3,12 +3,14 @@ package befaster.solutions.checkout;
 import befaster.solutions.checkout.offers.*;
 import befaster.solutions.checkout.offers.multi_item.FiveAsOffer;
 import befaster.solutions.checkout.offers.multi_item.FiveHsOffer;
+import befaster.solutions.checkout.offers.multi_item.TenHsOffer;
 import befaster.solutions.checkout.offers.multi_item.ThreeAsOffer;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
+    static Offer tenHsOffer = new TenHsOffer();
     static Offer fiveHsOffer = new FiveHsOffer();
     static Offer twoBsOffer = new TwoBsOffer();
     static Offer fiveAsOffer = new FiveAsOffer();
@@ -21,7 +23,8 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
-        DiscountResult FiveHsDiscount = fiveHsOffer.discountFor(skus);
+        DiscountResult TenHsDiscount = tenHsOffer.discountFor(skus);
+        DiscountResult FiveHsDiscount = fiveHsOffer.discountFor(TenHsDiscount.remainingSkus);
         DiscountResult TwoEsDiscount = TwoEsOffer.discountFor(FiveHsDiscount.remainingSkus);
         DiscountResult TwoBsDiscount = twoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
         DiscountResult FiveAsDiscount = fiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
@@ -33,7 +36,8 @@ public class Checkout {
                 TwoBsDiscount.discount +
                 TwoEsDiscount.discount +
                 TwoFsAsDiscount.discount +
-                FiveHsDiscount.discount;
+                FiveHsDiscount.discount +
+                TenHsDiscount.discount;
     }
 
 }
