@@ -1,15 +1,13 @@
 package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.*;
-import befaster.solutions.checkout.offers.multi_item.FiveAsOffer;
-import befaster.solutions.checkout.offers.multi_item.FiveHsOffer;
-import befaster.solutions.checkout.offers.multi_item.TenHsOffer;
-import befaster.solutions.checkout.offers.multi_item.ThreeAsOffer;
+import befaster.solutions.checkout.offers.multi_item.*;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
+    static Offer twoKsOffer = new TwoKsOffer();
     static Offer tenHsOffer = new TenHsOffer();
     static Offer fiveHsOffer = new FiveHsOffer();
     static Offer twoBsOffer = new TwoBsOffer();
@@ -23,7 +21,8 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
-        DiscountResult TenHsDiscount = tenHsOffer.discountFor(skus);
+        DiscountResult TwoKsDiscount = twoKsOffer.discountFor(skus);
+        DiscountResult TenHsDiscount = tenHsOffer.discountFor(TwoKsDiscount.remainingSkus);
         DiscountResult FiveHsDiscount = fiveHsOffer.discountFor(TenHsDiscount.remainingSkus);
         DiscountResult TwoEsDiscount = TwoEsOffer.discountFor(FiveHsDiscount.remainingSkus);
         DiscountResult TwoBsDiscount = twoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
@@ -37,7 +36,8 @@ public class Checkout {
                 TwoEsDiscount.discount +
                 TwoFsAsDiscount.discount +
                 FiveHsDiscount.discount +
-                TenHsDiscount.discount;
+                TenHsDiscount.discount +
+                TwoKsDiscount.discount;
     }
 
 }
