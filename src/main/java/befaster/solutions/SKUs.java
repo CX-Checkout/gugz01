@@ -18,6 +18,7 @@ public class SKUs {
         skuPrices.put("C", 20);
         skuPrices.put("D", 15);
         skuPrices.put("E", 40);
+        skuPrices.put("F", 10);
         return skuPrices;
     }
 
