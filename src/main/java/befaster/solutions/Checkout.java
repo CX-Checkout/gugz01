@@ -41,7 +41,8 @@ public class Checkout {
     public static class DiscountForAs {
         int priceFor(String skus) {
             long quantityOfAs = SKUs.skuQuantity(skus, "A");
-            return (int) quantityOfAs / 3 * 20;
+            int numberOfTripleAs = (int) quantityOfAs / 3;
+            return numberOfTripleAs * 20;
         }
 
     }
@@ -57,6 +58,16 @@ public class Checkout {
         int priceFor(String skus) {
             long quantityOfAs = SKUs.skuQuantity(skus, "E");
             return (int) quantityOfAs / 2 * 30;
+        }
+    }
+
+    private class DiscountResult {
+        private final int discount;
+        private final String skusLeft;
+
+        public DiscountResult(int discount, String skusLeft) {
+            this.discount = discount;
+            this.skusLeft = skusLeft;
         }
     }
 }
