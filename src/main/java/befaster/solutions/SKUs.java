@@ -1,5 +1,7 @@
 package befaster.solutions;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import static java.util.Arrays.asList;
@@ -51,6 +53,9 @@ public class SKUs {
     }
 
     static String sort(String input) {
-        return input;
+        return asList(input.split(""))
+                .stream()
+                .sorted((s1, s2) -> s1.compareTo(s2))
+                .flatMap()
     }
 }
