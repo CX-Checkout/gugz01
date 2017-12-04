@@ -2,8 +2,11 @@ package befaster.solutions.checkout.offers.combined_item;
 
 import befaster.solutions.checkout.SKUs;
 import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.Offer;
 
-public class CombinedItemOffer {
+import static org.apache.commons.lang3.StringUtils.repeat;
+
+public class CombinedItemOffer implements Offer {
 
     private final String sku;
     private final int numberOfItems;
@@ -22,18 +25,18 @@ public class CombinedItemOffer {
     }
 
     public DiscountResult discountFor(String skus) {
-        long quantityOfAs = SKUs.skuQuantity(skus, "E");
-        int numberOfDoubleEs = (int) quantityOfAs / 2;
+        long quantityOfAs = SKUs.skuQuantity(skus, sku);
+        int numberOfDoubleEs = (int) quantityOfAs / numberOfItems;
         if (numberOfDoubleEs > 0) {
-            String remainingSkus = SKUs.sort(skus).replaceAll("EE", "");
-            int discount = 0;
+            String remainingSkus = SKUs.sort(skus).replaceAll(repeat(sku, numberOfItems), "");
+            int totalDiscount = 0;
             for (int i = 0; i < numberOfDoubleEs; i++) {
-                if (remainingSkus.contains("B")) {
-                    discount += 30;
-                    remainingSkus = remainingSkus.replaceFirst("B", "");
+                if (remainingSkus.contains(freeSku)) {
+                    totalDiscount += discount;
+                    remainingSkus = remainingSkus.replaceFirst(freeSku, "");
                 }
             }
-            return new DiscountResult(discount, remainingSkus);
+            return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);
     }

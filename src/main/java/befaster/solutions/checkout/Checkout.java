@@ -17,6 +17,7 @@ public class Checkout {
     static Offer twoBsOffer = new TwoBsOffer();
     static Offer fiveAsOffer = new FiveAsOffer();
     static Offer threeAsOffer = new ThreeAsOffer();
+    static Offer twoEsOffer = new TwoEsOffer();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
@@ -32,7 +33,7 @@ public class Checkout {
         DiscountResult TwoKsDiscount = twoKsOffer.discountFor(FivePsDiscount.remainingSkus);
         DiscountResult TenHsDiscount = tenHsOffer.discountFor(TwoKsDiscount.remainingSkus);
         DiscountResult FiveHsDiscount = fiveHsOffer.discountFor(TenHsDiscount.remainingSkus);
-        DiscountResult TwoEsDiscount = TwoEsOffer.discountFor(FiveHsDiscount.remainingSkus);
+        DiscountResult TwoEsDiscount = twoEsOffer.discountFor(FiveHsDiscount.remainingSkus);
         DiscountResult TwoBsDiscount = twoBsOffer.discountFor(TwoEsDiscount.remainingSkus);
         DiscountResult FiveAsDiscount = fiveAsOffer.discountFor(TwoBsDiscount.remainingSkus);
         DiscountResult ThreeAsDiscount = threeAsOffer.discountFor(FiveAsDiscount.remainingSkus);
