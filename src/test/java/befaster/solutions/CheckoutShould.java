@@ -77,11 +77,11 @@ public class CheckoutShould {
 
     @Test
     @Parameters({
-            "EB, 70",
-            "EEB, 80",
-            "EEEEBBA, 210",
-            "EEBBA, 160",
-            "EEB BB A, 175", // EEB (80) + BB(45) + A(50) = 175
+//            "EB, 70",
+//            "EEB, 80",
+//            "EEEEBBA, 210",
+//            "EEBBA, 160",
+            "EEBBBA, 175", // EEB (80) + BB(45) + A(50) = 175
     })
     public void
     return_price_where_two_Es_will_give_a_free_B(String skus, int price) {
