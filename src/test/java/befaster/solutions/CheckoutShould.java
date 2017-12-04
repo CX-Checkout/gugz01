@@ -87,6 +87,7 @@ public class CheckoutShould {
 
     @Test
     @Parameters({
+            "EE, 80",
             "EB, 70",
             "EEB, 80",
             "EEEEBBA, 210",
