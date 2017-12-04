@@ -22,6 +22,7 @@ public class Checkout {
         skuPrices.put("B", 30);
         skuPrices.put("C", 20);
         skuPrices.put("D", 15);
+        skuPrices.put("E", 40);
         return skuPrices;
     }
 
