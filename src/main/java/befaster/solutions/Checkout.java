@@ -7,11 +7,13 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 public class Checkout {
 
     static HashMap<String, Integer> SKU_PRICE;
+    static String SKUS;
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
         if (!valid(skus)) return -1;
         SKU_PRICE = createSKUIndividualPrices();
+        SKUS = allSKUs();
         HashMap<String, Integer> skusQuantity = skusQuantityFor(skus);
         return priceWithoutDiscounts(skus) - discounts(skusQuantity);
     }
@@ -36,9 +38,17 @@ public class Checkout {
 
     private static boolean valid(String skus) {
         for (String sku : skus.split("")) {
-            if (!"ABCD".contains(sku)) return false;
+            if (!SKUS.contains(sku)) return false;
         }
         return true;
+    }
+
+    private static String allSKUs() {
+        String skus = "";
+        for (String sku : SKU_PRICE.keySet()) {
+            skus += sku;
+        }
+        return skus;
     }
 
     private static Integer discounts(HashMap<String, Integer> skusQuantity) {
