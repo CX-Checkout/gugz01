@@ -80,7 +80,8 @@ public class CheckoutShould {
             "EB, 70",
             "EEB, 80",
             "EEEEBBA, 210",
-//            "EEB B A BBA, 255",
+            "EEBBA, 160",
+            "EEBBBA, 175",
     })
     public void
     return_price_where_two_Es_will_give_a_free_B(String skus, int price) {
