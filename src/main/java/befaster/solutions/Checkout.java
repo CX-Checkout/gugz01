@@ -13,13 +13,13 @@ public class Checkout {
     private static Integer discounts(String skus) {
         int EDiscount = discountForEs(skus);
         DiscountResult ADiscount = discountForA(skus);
-        int BDiscount = discountForBs(skus);
+        DiscountResult BDiscount = discountForBs(skus);
         
         int discount = ADiscount.discount;
-        if (EDiscount > BDiscount) {
+        if (EDiscount > BDiscount.discount) {
             discount += EDiscount;
         } else {
-            discount += BDiscount;
+            discount += BDiscount.discount;
         }
         return discount;
     }
@@ -29,7 +29,7 @@ public class Checkout {
         return discountForAs.priceFor(skus);
     }
 
-    private static int discountForBs(String skus) {
+    private static DiscountResult discountForBs(String skus) {
         DiscountForBs discountForBs = new DiscountForBs();
         return discountForBs.priceFor(skus);
     }
@@ -55,9 +55,16 @@ public class Checkout {
     }
 
     public static class DiscountForBs {
-        int priceFor(String skus) {
+        DiscountResult priceFor(String skus) {
             long quantityOfAs = SKUs.skuQuantity(skus, "B");
-            return (int) quantityOfAs / 2 * 15;
+            int numberOfDoubleBs = (int) quantityOfAs / 2;
+            if (numberOfDoubleBs > 0) {
+                String orderedSkus = SKUs.sort(skus);
+                String remainingSkus = orderedSkus.replaceAll("BB", "");
+                int discount = numberOfDoubleBs * 15;
+                return new DiscountResult(discount, remainingSkus);
+            }
+            return new DiscountResult(0, skus);
         }
     }
 
