@@ -53,7 +53,13 @@ public class Checkout {
         int EDiscount = skusQuantity.getOrDefault("E", 0) / 2 * 30;
         int ADiscount = skusQuantity.getOrDefault("A", 0) / 3 * 20;
         int BDiscount = skusQuantity.getOrDefault("B", 0) / 2 * 15;
-        return ADiscount + BDiscount + EDiscount;
+        int discount = ADiscount;
+        if (EDiscount > BDiscount) {
+            discount += EDiscount;
+        } else {
+            discount += BDiscount;
+        }
+        return discount;
     }
 
     private static HashMap<String, Integer> skusQuantityFor(String skus) {
