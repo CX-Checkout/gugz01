@@ -13,7 +13,7 @@ public class TwoFsOfferShould {
 
     @Test
     @Parameters({
-//            "FF, 0, ",
+            "FF, 0, ",
             "FFF, 10, "
     })
     public void
