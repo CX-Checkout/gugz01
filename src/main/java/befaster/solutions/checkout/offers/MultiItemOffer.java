@@ -2,6 +2,8 @@ package befaster.solutions.checkout.offers;
 
 import befaster.solutions.checkout.SKUs;
 
+import static org.apache.commons.lang3.StringUtils.repeat;
+
 public class MultiItemOffer {
 
     private final String sku;
@@ -16,12 +18,12 @@ public class MultiItemOffer {
 
     public DiscountResult discountFor(String skus) {
         long quantityOfAs = SKUs.skuQuantity(skus, sku);
-        int numberOfTripleAs = (int) quantityOfAs / 3;
+        int numberOfTripleAs = (int) quantityOfAs / numberOfItems;
         if (numberOfTripleAs > 0) {
             String orderedSkus = SKUs.sort(skus);
-            String remainingSkus = orderedSkus.replaceAll("AAA", "");
-            int discount = numberOfTripleAs * 20;
-            return new DiscountResult(discount, remainingSkus);
+            String remainingSkus = orderedSkus.replaceAll(repeat(sku, numberOfItems), "");
+            int totalDiscount = numberOfTripleAs * discount;
+            return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);
     }
