@@ -12,16 +12,17 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         DiscountResult EDiscount = discountForEs(skus);
-        DiscountResult ADiscount = discountForA(skus);
-        DiscountResult BDiscount = discountForBs(skus);
-        
-        int discount = ADiscount.discount;
-        if (EDiscount.discount > BDiscount.discount) {
-            discount += EDiscount.discount;
-        } else {
-            discount += BDiscount.discount;
-        }
-        return discount;
+        DiscountResult BDiscount = discountForBs(EDiscount.remainingSkus);
+        DiscountResult ADiscount = discountForA(BDiscount.remainingSkus);
+
+        return ADiscount.discount + BDiscount.discount + EDiscount.discount;
+//        int discount = ADiscount.discount;
+//        if (EDiscount.discount > BDiscount.discount) {
+//            discount += EDiscount.discount;
+//        } else {
+//            discount += BDiscount.discount;
+//        }
+//        return discount;
     }
 
     private static DiscountResult discountForA(String skus) {
