@@ -48,10 +48,9 @@ public class SKUs {
 
     static long skuQuantity(String skus, String sku) {
         return asList(skus.split("")).stream().filter(s -> s.equals(sku)).count();
-//        HashMap<String, Integer> skusQuantity = new HashMap<>();
-//        for (String sku : skus.split("")) {
-//            skusQuantity.put(sku, skusQuantity.getOrDefault(sku, 0) + 1);
-//        }
-//        return skusQuantity.getOrDefault("A", 0);
+    }
+
+    static String sort(String input) {
+        return input;
     }
 }
