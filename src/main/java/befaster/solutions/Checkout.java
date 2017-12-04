@@ -12,9 +12,10 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         int EDiscount = discountForEs(skus);
-        int ADiscount = discountForA(skus);
+        DiscountResult ADiscount = discountForA(skus);
         int BDiscount = discountForBs(skus);
-        int discount = ADiscount;
+        
+        int discount = ADiscount.discount;
         if (EDiscount > BDiscount) {
             discount += EDiscount;
         } else {
@@ -23,7 +24,7 @@ public class Checkout {
         return discount;
     }
 
-    private static int discountForA(String skus) {
+    private static DiscountResult discountForA(String skus) {
         DiscountForAs discountForAs = new DiscountForAs();
         return discountForAs.priceFor(skus);
     }
@@ -39,10 +40,16 @@ public class Checkout {
     }
 
     public static class DiscountForAs {
-        int priceFor(String skus) {
+        DiscountResult priceFor(String skus) {
             long quantityOfAs = SKUs.skuQuantity(skus, "A");
             int numberOfTripleAs = (int) quantityOfAs / 3;
-            return numberOfTripleAs * 20;
+            if (numberOfTripleAs > 0) {
+                String orderedSkus = SKUs.sort(skus);
+                String remainingSkus = orderedSkus.replaceAll("AAA", "");
+                int discount = numberOfTripleAs * 20;
+                return new DiscountResult(discount, remainingSkus);
+            }
+            return new DiscountResult(0, skus);
         }
 
     }
@@ -61,13 +68,13 @@ public class Checkout {
         }
     }
 
-    private class DiscountResult {
+    public static class DiscountResult {
         private final int discount;
-        private final String skusLeft;
+        private final String remainingSkus;
 
-        public DiscountResult(int discount, String skusLeft) {
+        DiscountResult(int discount, String remainingSkus) {
             this.discount = discount;
-            this.skusLeft = skusLeft;
+            this.remainingSkus = remainingSkus;
         }
     }
 }
