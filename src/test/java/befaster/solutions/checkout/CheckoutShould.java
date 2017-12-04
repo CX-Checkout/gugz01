@@ -153,6 +153,9 @@ public class CheckoutShould {
             "V, 50",
             "VV, 90",
             "VVV, 130",
+            "VVVV, 180",
+            "VVVVV, 220",
+            "VVVVVV, 260",
     })
     public void
     return_multi_item_discount_for_V(String skus, int price) {
