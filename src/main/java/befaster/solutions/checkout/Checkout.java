@@ -2,6 +2,7 @@ package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
+import befaster.solutions.checkout.offers.any_three.AnyThreeFor45Offer;
 import befaster.solutions.checkout.offers.combined_item._2E_1B_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
@@ -14,6 +15,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 public class Checkout {
 
     static Offer[] offers = new Offer[] {
+            new AnyThreeFor45Offer(),
             new _2E_1B_Free_Offer(),
             new _3N_1M_Free_Offer(),
             new _3R_1Q_Free_Offer(),

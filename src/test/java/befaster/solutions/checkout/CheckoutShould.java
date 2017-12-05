@@ -216,5 +216,17 @@ public class CheckoutShould {
         assertThat(Checkout.checkout(skus), is(price));
     }
 
+    @Test
+    @Parameters({
+            "XYZ, 45",
+            "XTSA, 95"
+    })
+    public void
+    return_price_for_any_three_for_45(String skus, int price) {
+        assertThat(Checkout.checkout(skus), is(price));
+    }
+
+
+
 
 }
