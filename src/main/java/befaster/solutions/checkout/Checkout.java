@@ -29,6 +29,24 @@ public class Checkout {
     static Offer _2F_1F_Free_Offer = new _2F_1F_Free_Offer();
     static Offer _3U_1U_Free_Offer = new _3U_1U_Free_Offer();
 
+    static Offer[] offers = new Offer[] {
+            _3V_offer,
+            _2V_offer,
+            _3Q_offer,
+            _5P_offer,
+            _2K_offer,
+            _10H_offer,
+            _5H_offer,
+            _2B_offer,
+            _5A_offer,
+            _3A_offer,
+            _2E_1B_Free_Offer,
+            _3N_1M_Free_Offer,
+            _3R_1Q_Free_Offer,
+            _2F_1F_Free_Offer,
+            _3U_1U_Free_Offer
+    };
+
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
         if (!SKUs.valid(skus)) return -1;
@@ -36,6 +54,15 @@ public class Checkout {
     }
     
     private static Integer discounts(String skus) {
+//        int totalDiscount = 0;
+//        DiscountResult offerDiscount;
+//        String remainingSKUs = skus;
+//        for (Offer offer : offers) {
+//            offerDiscount = offer.discountFor(remainingSKUs);
+//            remainingSKUs = offerDiscount.remainingSkus;
+//            totalDiscount += offerDiscount.discount;
+//        }
+//        return totalDiscount;
         DiscountResult _3U_1U_Free_discount = _3U_1U_Free_Offer.discountFor(skus);
         DiscountResult _2F_1F_Free_discount  = _2F_1F_Free_Offer.discountFor(_3U_1U_Free_discount.remainingSkus);
         DiscountResult _3R_1Q_Free_discount = _3R_1Q_Free_Offer.discountFor(_2F_1F_Free_discount.remainingSkus);
