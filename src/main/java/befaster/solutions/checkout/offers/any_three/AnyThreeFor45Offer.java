@@ -34,6 +34,7 @@ public class AnyThreeFor45Offer implements Offer {
 
     private class SKUsQuantity {
 
+        private static final String STXYZ = "STXYZ";
         private List<SKUPrice> skuPrices = new ArrayList<>();
         private String skus;
 
@@ -44,7 +45,7 @@ public class AnyThreeFor45Offer implements Offer {
 
         private void populateQuantity(String skus) {
             for (String sku : skus.split("")) {
-                if ("STXYZ".contains(sku)) {
+                if (STXYZ.contains(sku)) {
                     skuPrices.add(new SKUPrice(sku, priceFor(sku)));
                     skuPrices.sort((a, b) -> (a.price > b.price) ? -1 : 1);
                 }
@@ -69,9 +70,11 @@ public class AnyThreeFor45Offer implements Offer {
                     count--;
                 }
             }
+
             int discount = 0;
-            if (totalPrice > OFFER_PRICE * numberOfOffers) {
-                discount = abs((OFFER_PRICE * numberOfOffers) - totalPrice);
+            int maxToBePaid = OFFER_PRICE * numberOfOffers;
+            if (totalPrice > maxToBePaid) {
+                discount = abs(maxToBePaid - totalPrice);
             }
             return new DiscountResult(discount, remainingSKUs);
         }
