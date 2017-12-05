@@ -31,14 +31,14 @@ public class SKUs {
         skuPrices.put("P", 50);
         skuPrices.put("Q", 30);
         skuPrices.put("R", 50);
-        skuPrices.put("S", 30);
+        skuPrices.put("S", 20);
         skuPrices.put("T", 20);
         skuPrices.put("U", 40);
         skuPrices.put("V", 50);
         skuPrices.put("W", 20);
-        skuPrices.put("X", 90);
-        skuPrices.put("Y", 10);
-        skuPrices.put("Z", 50);
+        skuPrices.put("X", 17);
+        skuPrices.put("Y", 20);
+        skuPrices.put("Z", 21);
         return skuPrices;
     }
 
