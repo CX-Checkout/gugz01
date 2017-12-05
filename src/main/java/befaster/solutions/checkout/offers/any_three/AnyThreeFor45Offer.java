@@ -13,9 +13,6 @@ public class AnyThreeFor45Offer implements Offer {
 
     private static final int OFFER_PRICE = 45;
 
-    public AnyThreeFor45Offer() {
-    }
-
     @Override
     public DiscountResult discountFor(String skus) {
         SKUsQuantity skusQuantity = new SKUsQuantity(skus);
@@ -34,7 +31,8 @@ public class AnyThreeFor45Offer implements Offer {
 
     private class SKUsQuantity {
 
-        private static final String STXYZ = "STXYZ";
+        private static final String SKUS_IN_OFFER = "STXYZ";
+
         private List<SKUPrice> skuPrices = new ArrayList<>();
         private String skus;
 
@@ -45,7 +43,7 @@ public class AnyThreeFor45Offer implements Offer {
 
         private void populateQuantity(String skus) {
             for (String sku : skus.split("")) {
-                if (STXYZ.contains(sku)) {
+                if (SKUS_IN_OFFER.contains(sku)) {
                     skuPrices.add(new SKUPrice(sku, priceFor(sku)));
                     skuPrices.sort((a, b) -> (a.price > b.price) ? -1 : 1);
                 }
