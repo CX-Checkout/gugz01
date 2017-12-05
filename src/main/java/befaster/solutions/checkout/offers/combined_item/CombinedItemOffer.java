@@ -14,7 +14,6 @@ public class CombinedItemOffer implements Offer {
 
     CombinedItemOffer(String sku,
                       int numberOfItems,
-                      int discount,
                       String freeSku) {
 
         this.sku = sku;
@@ -23,12 +22,11 @@ public class CombinedItemOffer implements Offer {
     }
 
     public DiscountResult discountFor(String skus) {
-        long quantityOfAs = skuQuantity(skus, sku);
-        int numberOfDoubleEs = (int) quantityOfAs / numberOfItems;
-        if (numberOfDoubleEs > 0) {
-            String remainingSkus = sort(skus).replaceAll(repeat(sku, numberOfItems), "");
+        int numberOfOffers = skuQuantity(skus, sku) / this.numberOfItems;
+        if (numberOfOffers > 0) {
+            String remainingSkus = removeSKUsPartOfTheOffer(skus);
             int totalDiscount = 0;
-            for (int i = 0; i < numberOfDoubleEs; i++) {
+            for (int i = 0; i < numberOfOffers; i++) {
                 if (remainingSkus.contains(freeSku)) {
                     totalDiscount += priceFor(freeSku);
                     remainingSkus = remainingSkus.replaceFirst(freeSku, "");
@@ -37,5 +35,9 @@ public class CombinedItemOffer implements Offer {
             return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);
+    }
+
+    private String removeSKUsPartOfTheOffer(String skus) {
+        return sort(skus).replaceAll(repeat(sku, this.numberOfItems), "");
     }
 }
