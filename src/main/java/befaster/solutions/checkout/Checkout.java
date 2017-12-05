@@ -6,7 +6,7 @@ import befaster.solutions.checkout.offers.combined_item._2E_1B_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
 import befaster.solutions.checkout.offers.multi_item.*;
-import befaster.solutions.checkout.offers.same_item_free.TwoF_offer;
+import befaster.solutions.checkout.offers.same_item_free._2F_1F_Free_Offer;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
@@ -25,7 +25,7 @@ public class Checkout {
     static Offer _2E_1B_Free_Offer = new _2E_1B_Free_Offer();
     static Offer _3N_1M_Free_Offer = new _3N_1M_Free_Offer();
     static Offer _3R_1Q_Free_Offer = new _3R_1Q_Free_Offer();
-    static Offer _2F_1F_Free_Offer = new TwoF_offer();
+    static Offer _2F_1F_Free_Offer = new _2F_1F_Free_Offer();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;

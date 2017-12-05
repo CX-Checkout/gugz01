@@ -6,10 +6,20 @@ import befaster.solutions.checkout.offers.Offer;
 
 public class SameItemFreeOffer implements Offer {
 
+    private final String sku;
+    private final int numberOfItems;
+    private final int discount;
+
+    public SameItemFreeOffer(String sku, int numberOfItems, int discount) {
+        this.sku = sku;
+        this.numberOfItems = numberOfItems;
+        this.discount = discount;
+    }
+
     @Override
     public DiscountResult discountFor(String skus) {
-        long quantityOfFs = SKUs.skuQuantity(skus, "F");
-        int numberOfTripleFs = (int) quantityOfFs / 3;
+        long quantityOfFs = SKUs.skuQuantity(skus, sku);
+        int numberOfTripleFs = (int) quantityOfFs / numberOfItems;
         String remainingSkus = "";
         if (numberOfTripleFs > 0) {
             String orderedSkus = SKUs.sort(skus);
