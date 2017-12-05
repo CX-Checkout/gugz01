@@ -1,6 +1,7 @@
 package befaster.solutions.checkout;
 
 import java.util.HashMap;
+import java.util.function.BinaryOperator;
 
 import static java.util.Arrays.stream;
 
@@ -8,6 +9,7 @@ public class SKUs {
 
     private static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
     private static final String SKUS = allSKUs();
+    private static final BinaryOperator<String> SUM_ALL = (a, b) -> a + b;
 
     private static HashMap<String, Integer> createSKUIndividualPrices() {
         HashMap<String, Integer> skuPrices = new HashMap<>();
@@ -41,11 +43,9 @@ public class SKUs {
     }
 
     private static String allSKUs() {
-        String skus = "";
-        for (String sku : SKU_PRICE.keySet()) {
-            skus += sku;
-        }
-        return skus;
+        return SKU_PRICE.keySet()
+                    .stream()
+                    .reduce("", SUM_ALL);
     }
 
     static boolean valid(String skus) {
