@@ -61,10 +61,10 @@ public class SKUs {
                     .reduce(0, (a, b) -> a + b);
     }
 
-    public static long skuQuantity(String skus, String sku) {
-        return stream(skus.split(""))
-                    .filter(s -> s.equals(sku))
-                    .count();
+    public static int skuQuantity(String skus, String sku) {
+        return (int) stream(skus.split(""))
+                        .filter(s -> s.equals(sku))
+                        .count();
     }
 
     public static String sort(String input) {

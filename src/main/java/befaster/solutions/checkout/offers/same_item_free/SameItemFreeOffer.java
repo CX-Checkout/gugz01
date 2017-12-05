@@ -12,18 +12,15 @@ public class SameItemFreeOffer implements Offer {
 
     private final String sku;
     private final int numberOfItems;
-    private final int discount;
 
-    public SameItemFreeOffer(String sku, int numberOfItems, int discount) {
+    SameItemFreeOffer(String sku, int numberOfItems) {
         this.sku = sku;
         this.numberOfItems = numberOfItems;
-        this.discount = discount;
     }
 
     @Override
     public DiscountResult discountFor(String skus) {
-        long quantityOfFs = skuQuantity(skus, sku);
-        int numberOfTripleFs = (int) quantityOfFs / numberOfItems;
+        int numberOfTripleFs = skuQuantity(skus, sku) / numberOfItems;
         String remainingSkus = "";
         if (numberOfTripleFs > 0) {
             String orderedSkus = SKUs.sort(skus);
