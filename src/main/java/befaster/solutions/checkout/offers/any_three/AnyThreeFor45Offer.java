@@ -20,13 +20,7 @@ public class AnyThreeFor45Offer implements Offer {
     @Override
     public DiscountResult discountFor(String skus) {
         SKUsQuantity skusQuantity = new SKUsQuantity(skus);
-
-        DiscountResult discount = new DiscountResult(0, skus);
-        while (skusQuantity.isInOffer()) {
-            discount = skusQuantity.discount(discount.remainingSkus);
-//            return discount;
-        }
-        return discount;
+        return skusQuantity.discount();
     }
 
     private class SKUPrice {
@@ -62,9 +56,11 @@ public class AnyThreeFor45Offer implements Offer {
         }
 
         public DiscountResult discount() {
+            int numberOfOffers = 0;
             int totalPrice = 0;
             String remainingSKUs = skus;
-            if (isInOffer()) {
+            while (isInOffer()) {
+                numberOfOffers++;
                 int count = 3;
                 while(count > 0) {
                     SKUPrice skuPrice = skuPrices.remove(0);
@@ -74,16 +70,10 @@ public class AnyThreeFor45Offer implements Offer {
                 }
             }
             int discount = 0;
-            if (totalPrice > 45) {
-                discount = abs(45 - totalPrice);
+            if (totalPrice > 45 * numberOfOffers) {
+                discount = abs((45 * numberOfOffers) - totalPrice);
             }
             return new DiscountResult(discount, remainingSKUs);
-        }
-
-        public DiscountResult discount(String remainingSkus) {
-            this.skus = remainingSkus;
-            populateQuantity(skus);
-            return discount();
         }
     }
 }
