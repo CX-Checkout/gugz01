@@ -12,7 +12,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-public class OfferAny3For45Should {
+public class Offer_Any_3_For_45_Should {
 
     private Offer anyThreeFor45Offer;
 

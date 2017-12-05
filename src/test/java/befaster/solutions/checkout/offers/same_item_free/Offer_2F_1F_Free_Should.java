@@ -1,4 +1,4 @@
-package befaster.solutions.checkout.offers.combined_item;
+package befaster.solutions.checkout.offers.same_item_free;
 
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
@@ -12,22 +12,26 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-public class __Offer_2E1BFree_Should {
+public class Offer_2F_1F_Free_Should {
 
-    private Offer twoEsOffer;
+    private Offer twoF_offer;
 
     @Before
     public void initialise() {
-        twoEsOffer = new Offer_2E_1B_Free();
+        twoF_offer = new Offer_2F_1F_Free();
     }
 
     @Test
     @Parameters({
-            "EE, 0, "
+            "FF, 0, FF",
+            "FFF, 10, ",
+            "FFFF, 10, F",
+            "FFFFFF, 20, ",
+            "FFFFFFFF, 20, FF"
     })
     public void
-    return_discount_for_two_Es_offer(String skus, int discount, String remainingSkus) {
-        DiscountResult discountResult = twoEsOffer.discountFor(skus);
+    return_price_for_TWO_Fs_GET_ONE_F_FREE(String skus, int discount, String remainingSkus) {
+        DiscountResult discountResult = twoF_offer.discountFor(skus);
         assertThat(discountResult.discount, is(discount));
         assertThat(discountResult.remainingSkus, is(remainingSkus));
     }
