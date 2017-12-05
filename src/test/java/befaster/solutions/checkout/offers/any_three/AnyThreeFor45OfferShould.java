@@ -34,9 +34,10 @@ public class AnyThreeFor45OfferShould {
             "XYZ, 13, ", // 21 + 20 + 17
             "TXY, 12, ", // 21 + 20 + 17
             "XTSA, 12, A",
-            "XTSTA, 12, TA", // 21 + 20 + 17 + 21
-            "TXYTXY, 24, ", // (21 + 20 + 17) * 2
+            "XTSTA, 12, TA",    // 21 + 20 + 17 + 21
+            "TXYTXY, 24, ",     // (21 + 20 + 17) * 2
             "TXYTXYAB, 24, AB", // (21 + 20 + 17) * 2
+            "SSSZ, 16, S",     // 20 + 20 + 20 + 21 = 81 - 45 = 36
     })
     public void
     return_45_if_any_3_of_S_T_X_Y_Z(String skus, int discount, String remainingSkus) {
