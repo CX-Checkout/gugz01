@@ -48,10 +48,7 @@ public class SKUs {
     }
 
     static boolean valid(String skus) {
-        for (String sku : skus.split("")) {
-            if (!SKUS.contains(sku)) return false;
-        }
-        return true;
+        return stream(skus.split("")).allMatch(SKUS::contains);
     }
 
     public static int priceFor(String sku) {
