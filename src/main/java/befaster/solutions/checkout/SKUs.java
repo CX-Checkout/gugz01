@@ -9,7 +9,6 @@ public class SKUs {
 
     private static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
     private static final String SKUS = allSKUs();
-    private static final BinaryOperator<String> SUM_ALL = (a, b) -> a + b;
 
     private static HashMap<String, Integer> createSKUIndividualPrices() {
         HashMap<String, Integer> skuPrices = new HashMap<>();
@@ -44,8 +43,8 @@ public class SKUs {
 
     private static String allSKUs() {
         return SKU_PRICE.keySet()
-                    .stream()
-                    .reduce("", SUM_ALL);
+                        .stream()
+                        .reduce("", sumAll());
     }
 
     static boolean valid(String skus) {
@@ -74,6 +73,10 @@ public class SKUs {
     public static String sort(String input) {
         return stream(input.split(""))
                     .sorted()
-                    .reduce("", (a, b) -> a + b);
+                    .reduce("", sumAll());
+    }
+
+    private static BinaryOperator<String> sumAll() {
+        return (a, b) -> a + b;
     }
 }
