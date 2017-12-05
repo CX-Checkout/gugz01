@@ -47,6 +47,7 @@ public class AnyThreeFor45Offer implements Offer {
             for (String sku : skus.split("")) {
                 if ("STXYZ".contains(sku)) {
                     skuPrices.add(new SKUPrice(sku, priceFor(sku)));
+                    skuPrices.sort((a, b) -> (a.price > b.price) ? -1 : 1);
                 }
             }
         }

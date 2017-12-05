@@ -34,7 +34,7 @@ public class AnyThreeFor45OfferShould {
             "XYZ, 13, ", // 21 + 20 + 17
             "TXY, 12, ", // 21 + 20 + 17
             "XTSA, 12, A",
-            "XTSTA, 12, TA",    // 21 + 20 + 17 + 21
+            "XTSTA, 15, XA",    // 21 + 20 + 17 + 21
             "TXYTXY, 24, ",     // (21 + 20 + 17) * 2
             "TXYTXYAB, 24, AB", // (21 + 20 + 17) * 2
             "SSSZ, 16, S",     // 20 + 20 + 20 + 21 = 81 - 45 = 36
