@@ -1,8 +1,8 @@
 package befaster.solutions.checkout.offers.combined_item;
 
-public class _2E_1B_Free_Offer extends CombinedItemOffer {
+public class Offer_2E_1B_Free extends CombinedItemOffer {
 
-    public _2E_1B_Free_Offer() {
+    public Offer_2E_1B_Free() {
         super("E", 2, 30, "B");
     }
 

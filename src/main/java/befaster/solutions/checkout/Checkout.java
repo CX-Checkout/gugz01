@@ -2,10 +2,10 @@ package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
-import befaster.solutions.checkout.offers.any_three.AnyThreeFor45Offer;
-import befaster.solutions.checkout.offers.combined_item._2E_1B_Free_Offer;
-import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
-import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
+import befaster.solutions.checkout.offers.any_three.Offer_Any_3_For_45;
+import befaster.solutions.checkout.offers.combined_item.Offer_2E_1B_Free;
+import befaster.solutions.checkout.offers.combined_item.Offer_3N_1M_Free;
+import befaster.solutions.checkout.offers.combined_item.Offer_3R_1Q_Free;
 import befaster.solutions.checkout.offers.multi_item.*;
 import befaster.solutions.checkout.offers.same_item_free._2F_1F_Free_Offer;
 import befaster.solutions.checkout.offers.same_item_free._3U_1U_Free_Offer;
@@ -17,10 +17,10 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 public class Checkout {
 
     static Offer[] offers = new Offer[] {
-            new AnyThreeFor45Offer(),
-            new _2E_1B_Free_Offer(),
-            new _3N_1M_Free_Offer(),
-            new _3R_1Q_Free_Offer(),
+            new Offer_Any_3_For_45(),
+            new Offer_2E_1B_Free(),
+            new Offer_3N_1M_Free(),
+            new Offer_3R_1Q_Free(),
             new _2F_1F_Free_Offer(),
             new _3U_1U_Free_Offer(),
             new ThreeVsOffer(),

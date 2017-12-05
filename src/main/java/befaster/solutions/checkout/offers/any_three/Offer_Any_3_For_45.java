@@ -9,7 +9,7 @@ import java.util.List;
 import static befaster.solutions.checkout.SKUs.priceFor;
 import static java.lang.Math.abs;
 
-public class AnyThreeFor45Offer implements Offer {
+public class Offer_Any_3_For_45 implements Offer {
 
     private static final int OFFER_PRICE = 45;
 
