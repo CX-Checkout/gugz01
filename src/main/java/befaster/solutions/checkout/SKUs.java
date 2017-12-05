@@ -1,15 +1,13 @@
 package befaster.solutions.checkout;
 
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
-import static java.util.Comparator.naturalOrder;
+import static java.util.Arrays.stream;
 
 public class SKUs {
 
-    static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
-    static final String SKUS = allSKUs();
+    private static final HashMap<String, Integer> SKU_PRICE = createSKUIndividualPrices();;
+    private static final String SKUS = allSKUs();
 
     private static HashMap<String, Integer> createSKUIndividualPrices() {
         HashMap<String, Integer> skuPrices = new HashMap<>();
@@ -70,13 +68,14 @@ public class SKUs {
     }
 
     public static long skuQuantity(String skus, String sku) {
-        return asList(skus.split("")).stream().filter(s -> s.equals(sku)).count();
+        return stream(skus.split(""))
+                    .filter(s -> s.equals(sku))
+                    .count();
     }
 
     public static String sort(String input) {
-        return asList(input.split(""))
-                .stream()
-                .sorted(naturalOrder())
-                .collect(Collectors.joining());
+        return stream(input.split(""))
+                    .sorted()
+                    .reduce("", (a, b) -> a + b);
     }
 }
