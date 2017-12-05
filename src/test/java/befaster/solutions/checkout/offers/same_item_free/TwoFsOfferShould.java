@@ -1,8 +1,10 @@
 package befaster.solutions.checkout.offers.same_item_free;
 
 import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.Offer;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -11,6 +13,13 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
 public class TwoFsOfferShould {
+
+    private Offer twoF_offer;
+
+    @Before
+    public void initialise() {
+        twoF_offer = new TwoF_offer();
+    }
 
     @Test
     @Parameters({
@@ -22,7 +31,7 @@ public class TwoFsOfferShould {
     })
     public void
     return_price_for_TWO_Fs_GET_ONE_F_FREE(String skus, int discount, String remainingSkus) {
-        DiscountResult discountResult = TwoF_offer.discountFor(skus);
+        DiscountResult discountResult = twoF_offer.discountFor(skus);
         assertThat(discountResult.discount, is(discount));
         assertThat(discountResult.remainingSkus, is(remainingSkus));
     }

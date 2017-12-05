@@ -1,6 +1,7 @@
 package befaster.solutions.checkout;
 
-import befaster.solutions.checkout.offers.*;
+import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.Offer;
 import befaster.solutions.checkout.offers.combined_item._2E_1B_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
@@ -24,6 +25,7 @@ public class Checkout {
     static Offer _2E_1B_Free_Offer = new _2E_1B_Free_Offer();
     static Offer _3N_1M_Free_Offer = new _3N_1M_Free_Offer();
     static Offer _3R_1Q_Free_Offer = new _3R_1Q_Free_Offer();
+    static Offer _2F_1F_Free_Offer = new TwoF_offer();
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
@@ -45,7 +47,7 @@ public class Checkout {
         DiscountResult _2B_discount  = _2B_offer.discountFor(_2E_discount.remainingSkus);
         DiscountResult _5A_discount  = _5A_offer.discountFor(_2B_discount.remainingSkus);
         DiscountResult _3A_discount  = _3A_offer.discountFor(_5A_discount.remainingSkus);
-        DiscountResult _2F_discount  = TwoF_offer.discountFor(_3A_discount.remainingSkus);
+        DiscountResult _2F_discount  = _2F_1F_Free_Offer.discountFor(_3A_discount.remainingSkus);
 
         return _5A_discount.discount +
                 _3A_discount.discount +
