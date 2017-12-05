@@ -3,6 +3,9 @@ package befaster.solutions.checkout.offers.any_three;
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AnyThreeFor45Offer implements Offer {
 
     private String[] SKUS_IN_OFFER = new String[] {"S", "T", "X", "Y", "Z"};
@@ -20,14 +23,28 @@ public class AnyThreeFor45Offer implements Offer {
     }
 
     private class SKUsQuantity {
+
+        private Map<String, Integer> skuQuantity = new HashMap<>();
         private String skus;
 
         SKUsQuantity(String skus) {
             this.skus = skus;
+            populateQuantity(skus);
+        }
+
+        private void populateQuantity(String skus) {
+            for (String s : skus.split("")) {
+                if ("STXYZ".contains(s)) {
+                    skuQuantity.put(s, skuQuantity.getOrDefault(s, 0) + 1);
+                }
+            }
         }
 
         boolean isInOffer() {
-            return ("STX".equals(skus));
+            Integer total= skuQuantity.values()
+                                    .stream()
+                                    .reduce(0, (a, b) -> a + b);
+            return total >= 3;
         }
     }
 }

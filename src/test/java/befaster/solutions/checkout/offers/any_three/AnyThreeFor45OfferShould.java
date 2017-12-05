@@ -26,7 +26,7 @@ public class AnyThreeFor45OfferShould {
             "A, 0, A",
             "STX, 45, ",
             "XTS, 45, ",
-//            "XTSA, 45, A",
+            "XTSA, 45, A",
     })
     public void
     return_45_if_any_3_of_S_T_X_Y_Z(String skus, int discount, String remainingSkus) {
