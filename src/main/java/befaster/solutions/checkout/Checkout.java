@@ -10,6 +10,8 @@ import befaster.solutions.checkout.offers.multi_item.*;
 import befaster.solutions.checkout.offers.same_item_free._2F_1F_Free_Offer;
 import befaster.solutions.checkout.offers.same_item_free._3U_1U_Free_Offer;
 
+import static befaster.solutions.checkout.SKUs.pricesFor;
+import static befaster.solutions.checkout.SKUs.valid;
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
@@ -35,8 +37,8 @@ public class Checkout {
 
     public static Integer checkout(String skus) {
         if (isNullOrEmpty(skus)) return 0;
-        if (!SKUs.valid(skus)) return -1;
-        return SKUs.pricesFor(skus) - discounts(skus);
+        if (!valid(skus)) return -1;
+        return pricesFor(skus) - discounts(skus);
     }
     
     private static Integer discounts(String skus) {

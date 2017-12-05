@@ -11,7 +11,6 @@ import static java.lang.Math.abs;
 
 public class AnyThreeFor45Offer implements Offer {
 
-    private String[] SKUS_IN_OFFER = new String[] {"S", "T", "X", "Y", "Z"};
     private static final int OFFER_PRICE = 45;
 
     public AnyThreeFor45Offer() {
@@ -71,8 +70,8 @@ public class AnyThreeFor45Offer implements Offer {
                 }
             }
             int discount = 0;
-            if (totalPrice > 45 * numberOfOffers) {
-                discount = abs((45 * numberOfOffers) - totalPrice);
+            if (totalPrice > OFFER_PRICE * numberOfOffers) {
+                discount = abs((OFFER_PRICE * numberOfOffers) - totalPrice);
             }
             return new DiscountResult(discount, remainingSKUs);
         }
