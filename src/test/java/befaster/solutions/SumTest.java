@@ -1,5 +1,6 @@
 package befaster.solutions;
 
+import befaster.solutions.warmup.Sum;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

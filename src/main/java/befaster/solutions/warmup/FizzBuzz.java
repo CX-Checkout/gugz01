@@ -1,4 +1,4 @@
-package befaster.solutions;
+package befaster.solutions.warmup;
 
 import befaster.runner.SolutionNotImplementedException;
 

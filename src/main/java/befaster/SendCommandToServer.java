@@ -4,9 +4,9 @@ import befaster.runner.ClientRunner;
 import befaster.runner.ConfigNotFoundException;
 import befaster.runner.RunnerAction;
 import befaster.solutions.checkout.Checkout;
-import befaster.solutions.FizzBuzz;
-import befaster.solutions.Hello;
-import befaster.solutions.Sum;
+import befaster.solutions.warmup.FizzBuzz;
+import befaster.solutions.warmup.Hello;
+import befaster.solutions.warmup.Sum;
 
 import static befaster.runner.CredentialsConfigFile.readFromConfigFile;
 import static befaster.runner.TypeConversion.asInt;
