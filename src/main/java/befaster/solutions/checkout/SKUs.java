@@ -57,7 +57,7 @@ public class SKUs {
         return true;
     }
 
-    static int priceFor(String sku) {
+    public static int priceFor(String sku) {
         return SKU_PRICE.getOrDefault(sku, 0);
     }
 

@@ -4,6 +4,8 @@ import befaster.solutions.checkout.SKUs;
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
 
+import static befaster.solutions.checkout.SKUs.priceFor;
+import static befaster.solutions.checkout.SKUs.skuQuantity;
 import static org.apache.commons.lang3.StringUtils.repeat;
 
 public class SameItemFreeOffer implements Offer {
@@ -20,13 +22,13 @@ public class SameItemFreeOffer implements Offer {
 
     @Override
     public DiscountResult discountFor(String skus) {
-        long quantityOfFs = SKUs.skuQuantity(skus, sku);
+        long quantityOfFs = skuQuantity(skus, sku);
         int numberOfTripleFs = (int) quantityOfFs / numberOfItems;
         String remainingSkus = "";
         if (numberOfTripleFs > 0) {
             String orderedSkus = SKUs.sort(skus);
             remainingSkus = orderedSkus.replaceAll(repeat(sku, numberOfItems), "");
-            int totalDiscount = numberOfTripleFs * discount;
+            int totalDiscount = numberOfTripleFs * priceFor(sku);
             return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);    }
