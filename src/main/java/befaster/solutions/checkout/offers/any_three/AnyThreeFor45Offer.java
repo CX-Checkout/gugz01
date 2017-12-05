@@ -6,6 +6,6 @@ import befaster.solutions.checkout.offers.Offer;
 public class AnyThreeFor45Offer implements Offer {
     @Override
     public DiscountResult discountFor(String skus) {
-        return null;
+        return new DiscountResult(45, "");
     }
 }
