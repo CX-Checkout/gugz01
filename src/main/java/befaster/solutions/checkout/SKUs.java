@@ -60,11 +60,9 @@ public class SKUs {
     }
 
     static int pricesFor(String skus) {
-        Integer totalPrice = 0;
-        for (String sku : skus.split("")) {
-            totalPrice += SKUs.priceFor(sku);
-        }
-        return totalPrice;
+        return stream(skus.split(""))
+                    .map(SKUs::priceFor)
+                    .reduce(0, (a, b) -> a + b);
     }
 
     public static long skuQuantity(String skus, String sku) {
