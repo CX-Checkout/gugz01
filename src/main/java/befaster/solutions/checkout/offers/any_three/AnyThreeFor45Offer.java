@@ -21,10 +21,12 @@ public class AnyThreeFor45Offer implements Offer {
     public DiscountResult discountFor(String skus) {
         SKUsQuantity skusQuantity = new SKUsQuantity(skus);
 
+        DiscountResult discount = new DiscountResult(0, skus);
         if (skusQuantity.isInOffer()) {
-            return skusQuantity.discount();
+            discount = skusQuantity.discount();
+            return discount;
         }
-        return new DiscountResult(0, skus);
+        return discount;
     }
 
     private class SKUPrice {
