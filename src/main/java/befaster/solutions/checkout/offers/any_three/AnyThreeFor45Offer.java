@@ -23,8 +23,8 @@ public class AnyThreeFor45Offer implements Offer {
 
         DiscountResult discount = new DiscountResult(0, skus);
         while (skusQuantity.isInOffer()) {
-            discount = skusQuantity.discount();
-            return discount;
+            discount = skusQuantity.discount(discount.remainingSkus);
+//            return discount;
         }
         return discount;
     }
@@ -78,6 +78,12 @@ public class AnyThreeFor45Offer implements Offer {
                 discount = abs(45 - totalPrice);
             }
             return new DiscountResult(discount, remainingSKUs);
+        }
+
+        public DiscountResult discount(String remainingSkus) {
+            this.skus = remainingSkus;
+            populateQuantity(skus);
+            return discount();
         }
     }
 }
