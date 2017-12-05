@@ -1,6 +1,7 @@
-package befaster.solutions.checkout.offers;
+package befaster.solutions.checkout.offers.same_item_free;
 
 import befaster.solutions.checkout.SKUs;
+import befaster.solutions.checkout.offers.DiscountResult;
 
 public class TwoF_offer {
 

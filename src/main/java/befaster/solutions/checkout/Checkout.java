@@ -1,9 +1,11 @@
 package befaster.solutions.checkout;
 
 import befaster.solutions.checkout.offers.*;
+import befaster.solutions.checkout.offers.combined_item._2E_1B_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3N_1M_Free_Offer;
 import befaster.solutions.checkout.offers.combined_item._3R_1Q_Free_Offer;
 import befaster.solutions.checkout.offers.multi_item.*;
+import befaster.solutions.checkout.offers.same_item_free.TwoF_offer;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
@@ -19,7 +21,7 @@ public class Checkout {
     static Offer _2B_offer  = new TwoBsOffer();
     static Offer _5A_offer  = new FiveAsOffer();
     static Offer _3A_offer  = new ThreeAsOffer();
-    static Offer _2E_offer  = new TwoEsOffer();
+    static Offer _2E_1B_Free_Offer = new _2E_1B_Free_Offer();
     static Offer _3N_1M_Free_Offer = new _3N_1M_Free_Offer();
     static Offer _3R_1Q_Free_Offer = new _3R_1Q_Free_Offer();
 
@@ -39,7 +41,7 @@ public class Checkout {
         DiscountResult _2K_discount  = _2K_offer.discountFor(_5P_discount.remainingSkus);
         DiscountResult _10H_discount = _10H_offer.discountFor(_2K_discount.remainingSkus);
         DiscountResult _5H_discount  = _5H_offer.discountFor(_10H_discount.remainingSkus);
-        DiscountResult _2E_discount  = _2E_offer.discountFor(_5H_discount.remainingSkus);
+        DiscountResult _2E_discount  = _2E_1B_Free_Offer.discountFor(_5H_discount.remainingSkus);
         DiscountResult _2B_discount  = _2B_offer.discountFor(_2E_discount.remainingSkus);
         DiscountResult _5A_discount  = _5A_offer.discountFor(_2B_discount.remainingSkus);
         DiscountResult _3A_discount  = _3A_offer.discountFor(_5A_discount.remainingSkus);

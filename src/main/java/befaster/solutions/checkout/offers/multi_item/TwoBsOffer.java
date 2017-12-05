@@ -1,6 +1,4 @@
-package befaster.solutions.checkout.offers;
-
-import befaster.solutions.checkout.offers.multi_item.MultiItemOffer;
+package befaster.solutions.checkout.offers.multi_item;
 
 public class TwoBsOffer extends MultiItemOffer {
 

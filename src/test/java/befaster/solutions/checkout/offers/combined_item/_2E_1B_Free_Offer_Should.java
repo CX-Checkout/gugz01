@@ -1,5 +1,7 @@
-package befaster.solutions.checkout.offers;
+package befaster.solutions.checkout.offers.combined_item;
 
+import befaster.solutions.checkout.offers.DiscountResult;
+import befaster.solutions.checkout.offers.Offer;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -10,13 +12,13 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-public class TwoEsOfferShould {
+public class _2E_1B_Free_Offer_Should {
 
     private Offer twoEsOffer;
 
     @Before
     public void initialise() {
-        twoEsOffer = new TwoEsOffer();
+        twoEsOffer = new _2E_1B_Free_Offer();
     }
 
     @Test
