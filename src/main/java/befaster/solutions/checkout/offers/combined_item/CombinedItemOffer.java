@@ -10,17 +10,15 @@ public class CombinedItemOffer implements Offer {
 
     private final String sku;
     private final int numberOfItems;
-    private final int discount;
     private final String freeSku;
 
-    public CombinedItemOffer(String sku,
-                             int numberOfItems,
-                             int discount,
-                             String freeSku) {
+    CombinedItemOffer(String sku,
+                      int numberOfItems,
+                      int discount,
+                      String freeSku) {
 
         this.sku = sku;
         this.numberOfItems = numberOfItems;
-        this.discount = discount;
         this.freeSku = freeSku;
     }
 

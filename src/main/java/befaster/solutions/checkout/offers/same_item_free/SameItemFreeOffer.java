@@ -24,7 +24,8 @@ public class SameItemFreeOffer implements Offer {
             int totalDiscount = numberOfOffers * priceFor(sku);
             return new DiscountResult(totalDiscount, remainingSkus);
         }
-        return new DiscountResult(0, skus);    }
+        return new DiscountResult(0, skus);
+    }
 
     private String removeSKUsPartOfTheOffer(String skus) {
         return sort(skus).replaceAll(repeat(sku, numberOfItems), "");
