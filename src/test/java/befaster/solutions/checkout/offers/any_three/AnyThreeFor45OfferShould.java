@@ -30,7 +30,8 @@ public class AnyThreeFor45OfferShould {
     @Parameters({
             "A, 0, A",
             "STX, 12, ", // 20 + 20 + 17
-//            "XTS, 45, ",
+            "XTS, 12, ", // 17 + 20 + 20
+            "XYZ, 13, ", // 21 + 20 + 17
 //            "XTSA, 45, A",
     })
     public void
