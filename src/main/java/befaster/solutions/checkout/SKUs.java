@@ -23,7 +23,7 @@ public class SKUs {
         skuPrices.put("H", 10);
         skuPrices.put("I", 35);
         skuPrices.put("J", 60);
-        skuPrices.put("K", 80);
+        skuPrices.put("K", 70);
         skuPrices.put("L", 90);
         skuPrices.put("M", 15);
         skuPrices.put("N", 40);

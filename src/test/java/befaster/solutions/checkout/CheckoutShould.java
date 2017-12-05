@@ -40,7 +40,7 @@ public class CheckoutShould {
             "H, 10",
             "I, 35",
             "J, 60",
-            "K, 80",
+            "K, 70",
             "L, 90",
             "M, 15",
             "N, 40",
@@ -120,8 +120,8 @@ public class CheckoutShould {
 
     @Test
     @Parameters({
-            "K, 80",
-            "KK, 150",
+            "K, 70",
+            "KK, 120",
     })
     public void
     return_multi_item_discount_for_K(String skus, int price) {

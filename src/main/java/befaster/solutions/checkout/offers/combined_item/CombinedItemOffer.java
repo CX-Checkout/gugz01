@@ -1,9 +1,9 @@
 package befaster.solutions.checkout.offers.combined_item;
 
-import befaster.solutions.checkout.SKUs;
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
 
+import static befaster.solutions.checkout.SKUs.*;
 import static org.apache.commons.lang3.StringUtils.repeat;
 
 public class CombinedItemOffer implements Offer {
@@ -25,14 +25,14 @@ public class CombinedItemOffer implements Offer {
     }
 
     public DiscountResult discountFor(String skus) {
-        long quantityOfAs = SKUs.skuQuantity(skus, sku);
+        long quantityOfAs = skuQuantity(skus, sku);
         int numberOfDoubleEs = (int) quantityOfAs / numberOfItems;
         if (numberOfDoubleEs > 0) {
-            String remainingSkus = SKUs.sort(skus).replaceAll(repeat(sku, numberOfItems), "");
+            String remainingSkus = sort(skus).replaceAll(repeat(sku, numberOfItems), "");
             int totalDiscount = 0;
             for (int i = 0; i < numberOfDoubleEs; i++) {
                 if (remainingSkus.contains(freeSku)) {
-                    totalDiscount += discount;
+                    totalDiscount += priceFor(freeSku);
                     remainingSkus = remainingSkus.replaceFirst(freeSku, "");
                 }
             }

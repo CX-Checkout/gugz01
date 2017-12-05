@@ -1,6 +1,5 @@
 package befaster.solutions.checkout.offers.multi_item;
 
-import befaster.solutions.checkout.SKUs;
 import befaster.solutions.checkout.offers.DiscountResult;
 import befaster.solutions.checkout.offers.Offer;
 
@@ -26,7 +25,7 @@ public class MultiItemOffer implements Offer {
         if (numberOfMultipleItems > 0) {
             String orderedSkus = sort(skus);
             String remainingSkus = orderedSkus.replaceAll(repeat(sku, numberOfItems), "");
-            int totalDiscount = numberOfMultipleItems * SKUs.priceFor(sku);
+            int totalDiscount = numberOfMultipleItems * discount;
             return new DiscountResult(totalDiscount, remainingSkus);
         }
         return new DiscountResult(0, skus);
