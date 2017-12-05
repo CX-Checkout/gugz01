@@ -1,7 +1,7 @@
 package befaster.solutions.checkout.offers.multi_item;
 
-public class TwoKsOffer extends MultiItemOffer {
-    public TwoKsOffer() {
+public class Offer_2K_For_120 extends MultiItemOffer {
+    public Offer_2K_For_120() {
         super("K", 2, 20);
     }
 }

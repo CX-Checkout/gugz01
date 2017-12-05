@@ -12,13 +12,13 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-public class _2F_1F_Free_Offer_Should {
+public class __Offer_2F1FFree_Should {
 
     private Offer twoF_offer;
 
     @Before
     public void initialise() {
-        twoF_offer = new _2F_1F_Free_Offer();
+        twoF_offer = new Offer_2F_1F_Free();
     }
 
     @Test
