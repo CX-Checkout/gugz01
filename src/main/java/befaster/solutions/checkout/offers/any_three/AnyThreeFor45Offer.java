@@ -16,8 +16,9 @@ public class AnyThreeFor45Offer implements Offer {
     @Override
     public DiscountResult discountFor(String skus) {
         SKUsQuantity skusQuantity = new SKUsQuantity(skus);
+
         if (skusQuantity.isInOffer()) {
-            return new DiscountResult(45, "");
+            return new DiscountResult(12, "");
         }
         return new DiscountResult(0, skus);
     }

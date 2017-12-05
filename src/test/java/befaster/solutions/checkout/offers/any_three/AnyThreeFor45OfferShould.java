@@ -21,12 +21,17 @@ public class AnyThreeFor45OfferShould {
         anyThreeFor45Offer = new AnyThreeFor45Offer();
     }
 
+    // S = 20
+    // T = 20
+    // X = 17
+    // Y = 20
+    // Z = 21
     @Test
     @Parameters({
             "A, 0, A",
-            "STX, 45, ",
-            "XTS, 45, ",
-            "XTSA, 45, A",
+            "STX, 12, ", // 20 + 20 + 17
+//            "XTS, 45, ",
+//            "XTSA, 45, A",
     })
     public void
     return_45_if_any_3_of_S_T_X_Y_Z(String skus, int discount, String remainingSkus) {
