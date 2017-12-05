@@ -37,7 +37,8 @@ public class Checkout {
     
     private static Integer discounts(String skus) {
         DiscountResult _3U_1U_Free_discount = _3U_1U_Free_Offer.discountFor(skus);
-        DiscountResult _3R_1Q_Free_discount = _3R_1Q_Free_Offer.discountFor(_3U_1U_Free_discount.remainingSkus);
+        DiscountResult _2F_1F_Free_discount  = _2F_1F_Free_Offer.discountFor(_3U_1U_Free_discount.remainingSkus);
+        DiscountResult _3R_1Q_Free_discount = _3R_1Q_Free_Offer.discountFor(_2F_1F_Free_discount.remainingSkus);
         DiscountResult _3N_1M_Free_discount = _3N_1M_Free_Offer.discountFor(_3R_1Q_Free_discount.remainingSkus);
         DiscountResult _3V_discount  = _3V_offer.discountFor(_3N_1M_Free_discount.remainingSkus);
         DiscountResult _2V_discount  = _2V_offer.discountFor(_3V_discount.remainingSkus);
@@ -50,13 +51,12 @@ public class Checkout {
         DiscountResult _2B_discount  = _2B_offer.discountFor(_2E_discount.remainingSkus);
         DiscountResult _5A_discount  = _5A_offer.discountFor(_2B_discount.remainingSkus);
         DiscountResult _3A_discount  = _3A_offer.discountFor(_5A_discount.remainingSkus);
-        DiscountResult _2F_discount  = _2F_1F_Free_Offer.discountFor(_3A_discount.remainingSkus);
 
         return _5A_discount.discount +
                 _3A_discount.discount +
                 _2B_discount.discount +
                 _2E_discount.discount +
-                _2F_discount.discount +
+                _2F_1F_Free_discount.discount +
                 _5H_discount.discount +
                 _10H_discount.discount +
                 _2K_discount.discount +
