@@ -29,15 +29,17 @@ public class AnyThreeFor45OfferShould {
     @Test
     @Parameters({
             "A, 0, A",
-            "STX, 12, ", // 20 + 20 + 17
-            "XTS, 12, ", // 17 + 20 + 20
-            "XYZ, 13, ", // 21 + 20 + 17
-            "TXY, 12, ", // 21 + 20 + 17
+            "STX, 12, ", 
+            "XTS, 12, ",
+            "XYZ, 13, ",
+            "TXY, 12, ",
             "XTSA, 12, A",
-            "XTSTA, 15, XA",    // 21 + 20 + 17 + 21
-            "TXYTXY, 24, ",     // (21 + 20 + 17) * 2
-            "TXYTXYAB, 24, AB", // (21 + 20 + 17) * 2
-            "SSSZ, 16, S",     // 20 + 20 + 20 + 21 = 81 - 45 = 36
+            "XTSTA, 15, XA",
+            "TXYTXY, 24, ",
+            "TXYTXYAB, 24, AB",
+            "SSSZ, 16, S",
+            "STXS, 15, X",
+            "STXZ, 16, X",
     })
     public void
     return_45_if_any_3_of_S_T_X_Y_Z(String skus, int discount, String remainingSkus) {
