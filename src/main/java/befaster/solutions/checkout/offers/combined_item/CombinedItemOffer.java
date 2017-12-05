@@ -24,16 +24,24 @@ public class CombinedItemOffer implements Offer {
     public DiscountResult discountFor(String skus) {
         int numberOfOffers = skuQuantity(skus, sku) / this.numberOfItems;
         if (numberOfOffers > 0) {
-            String remainingSkus = removeSKUsPartOfTheOffer(skus);
-            int totalDiscount = 0;
-            for (int i = 0; i < numberOfOffers; i++) {
-                if (remainingSkus.contains(freeSku)) {
-                    totalDiscount += priceFor(freeSku);
-                    remainingSkus = remainingSkus.replaceFirst(freeSku, "");
-                }
-            }
-            return new DiscountResult(totalDiscount, remainingSkus);
+            return calculateDiscount(skus, numberOfOffers);
         }
+        return noDiscount(skus);
+    }
+
+    private DiscountResult calculateDiscount(String skus, int numberOfOffers) {
+        String remainingSkus = removeSKUsPartOfTheOffer(skus);
+        int totalDiscount = 0;
+        for (int i = 0; i < numberOfOffers; i++) {
+            if (remainingSkus.contains(freeSku)) {
+                totalDiscount += priceFor(freeSku);
+                remainingSkus = remainingSkus.replaceFirst(freeSku, "");
+            }
+        }
+        return new DiscountResult(totalDiscount, remainingSkus);
+    }
+
+    private DiscountResult noDiscount(String skus) {
         return new DiscountResult(0, skus);
     }
 

@@ -22,11 +22,18 @@ public class MultiItemOffer implements Offer {
     @Override
     public DiscountResult discountFor(String skus) {
         int numberOfMultipleItems = skuQuantity(skus, sku) / numberOfItems;
-        if (numberOfMultipleItems > 0) {
-            String remainingSkus = removeSKUsPartOfTheOffer(skus);
-            int totalDiscount = numberOfMultipleItems * discount;
-            return new DiscountResult(totalDiscount, remainingSkus);
-        }
+        return numberOfMultipleItems > 0
+                    ? calculateDiscount(skus, numberOfMultipleItems)
+                    : noDiscount(skus);
+    }
+
+    private DiscountResult calculateDiscount(String skus, int numberOfMultipleItems) {
+        String remainingSkus = removeSKUsPartOfTheOffer(skus);
+        int totalDiscount = numberOfMultipleItems * discount;
+        return new DiscountResult(totalDiscount, remainingSkus);
+    }
+
+    private DiscountResult noDiscount(String skus) {
         return new DiscountResult(0, skus);
     }
 
