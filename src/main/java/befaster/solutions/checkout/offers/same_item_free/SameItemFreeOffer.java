@@ -19,11 +19,18 @@ public class SameItemFreeOffer implements Offer {
     @Override
     public DiscountResult discountFor(String skus) {
         int numberOfOffers = skuQuantity(skus, sku) / numberOfItems;
-        if (numberOfOffers > 0) {
-            String remainingSkus = removeSKUsPartOfTheOffer(skus);
-            int totalDiscount = numberOfOffers * priceFor(sku);
-            return new DiscountResult(totalDiscount, remainingSkus);
-        }
+        return numberOfOffers > 0
+                    ? calculateDiscount(skus, numberOfOffers)
+                    : noDiscount(skus);
+    }
+
+    private DiscountResult calculateDiscount(String skus, int numberOfOffers) {
+        String remainingSkus = removeSKUsPartOfTheOffer(skus);
+        int totalDiscount = numberOfOffers * priceFor(sku);
+        return new DiscountResult(totalDiscount, remainingSkus);
+    }
+
+    private DiscountResult noDiscount(String skus) {
         return new DiscountResult(0, skus);
     }
 

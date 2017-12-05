@@ -15,18 +15,16 @@ public class CombinedItemOffer implements Offer {
     CombinedItemOffer(String sku,
                       int numberOfItems,
                       String freeSku) {
-
         this.sku = sku;
         this.numberOfItems = numberOfItems;
         this.freeSku = freeSku;
     }
 
     public DiscountResult discountFor(String skus) {
-        int numberOfOffers = skuQuantity(skus, sku) / this.numberOfItems;
-        if (numberOfOffers > 0) {
-            return calculateDiscount(skus, numberOfOffers);
-        }
-        return noDiscount(skus);
+        int numberOfOffers = skuQuantity(skus, sku) / numberOfItems;
+        return numberOfOffers > 0
+                    ? calculateDiscount(skus, numberOfOffers)
+                    : noDiscount(skus);
     }
 
     private DiscountResult calculateDiscount(String skus, int numberOfOffers) {
