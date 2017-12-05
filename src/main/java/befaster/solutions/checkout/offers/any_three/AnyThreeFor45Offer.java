@@ -22,7 +22,7 @@ public class AnyThreeFor45Offer implements Offer {
         SKUsQuantity skusQuantity = new SKUsQuantity(skus);
 
         DiscountResult discount = new DiscountResult(0, skus);
-        if (skusQuantity.isInOffer()) {
+        while (skusQuantity.isInOffer()) {
             discount = skusQuantity.discount();
             return discount;
         }
