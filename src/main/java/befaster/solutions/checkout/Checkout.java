@@ -16,7 +16,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Checkout {
 
-    static Offer[] offers = new Offer[] {
+    private static Offer[] offers = new Offer[] {
             new Offer_Any_3_For_45(),
             new Offer_2E_1B_Free(),
             new Offer_3N_1M_Free(),
@@ -51,7 +51,6 @@ public class Checkout {
             totalDiscount += offerDiscount.discount;
         }
         return totalDiscount;
-
     }
 
 }
